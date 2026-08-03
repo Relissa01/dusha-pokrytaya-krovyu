@@ -1,4 +1,12 @@
+<div class="bismillah">
 
+    <div class="symbol">﷽</div>
+
+    <div class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+
+</div>
+
+<header>
 const cards=[...document.querySelectorAll(".card")];
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{

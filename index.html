@@ -1,32 +1,339 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090707"><title>Душа, покрытая кровью</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marck+Script&family=Montserrat:wght@300;400;500;600&display=swap');
-:root{--ink:#090707;--wine:#3b0710;--blood:#7c0b1d;--gold:#c8a45d;--ivory:#efe5d1;--muted:#b8aa95;--panel:rgba(22,13,14,.88);--line:rgba(200,164,93,.38)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ivory);background:radial-gradient(circle at 18% 18%,rgba(124,11,29,.20),transparent 31%),radial-gradient(circle at 82% 10%,rgba(200,164,93,.08),transparent 28%),linear-gradient(180deg,#090707 0%,#13090b 48%,#080606 100%);font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(45deg,transparent 47%,rgba(200,164,93,.18) 48%,rgba(200,164,93,.18) 49%,transparent 50%),linear-gradient(-45deg,transparent 47%,rgba(200,164,93,.11) 48%,rgba(200,164,93,.11) 49%,transparent 50%);background-size:58px 58px}
-a{color:inherit}.site-nav{position:sticky;top:0;z-index:50;display:flex;justify-content:center;flex-wrap:wrap;gap:6px;padding:10px 14px;background:rgba(8,5,5,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.site-nav a{text-decoration:none;padding:10px 13px;border-radius:999px;color:#eadfc9;font-size:.86rem;letter-spacing:.04em;transition:.25s ease}.site-nav a:hover,.site-nav a:focus{background:rgba(124,11,29,.45);color:#fff;outline:none}
-.hero{position:relative;min-height:92vh;padding:90px 24px 70px;display:grid;place-items:center;text-align:center;overflow:hidden}
-.hero::before,.hero::after{content:"";position:absolute;width:390px;height:390px;border:1px solid var(--line);transform:rotate(45deg);opacity:.42}.hero::before{top:-210px;left:-120px}.hero::after{right:-170px;bottom:-230px}
-.hero-inner{position:relative;z-index:2;max-width:900px}.kicker{text-transform:uppercase;letter-spacing:.38em;color:var(--gold);font-size:.72rem;margin-bottom:24px}
-h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.02em}h1{margin:0;font-size:clamp(3.1rem,9vw,7.4rem);line-height:.88;font-weight:600;text-shadow:0 7px 35px rgba(124,11,29,.65)}
-.hero-subtitle{margin:24px auto 8px;color:var(--gold);font-family:"Marck Script",cursive;font-size:clamp(1.45rem,3vw,2.35rem)}.hero-copy{max-width:680px;margin:22px auto;color:#d4c9b7;line-height:1.85}
-.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-block;text-decoration:none;padding:13px 22px;border:1px solid var(--gold);border-radius:3px;color:#f5ead5;background:linear-gradient(180deg,#781027,#510714);box-shadow:0 12px 30px rgba(0,0,0,.35);transition:.25s ease}.btn.secondary{background:transparent}.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
-.ornament{display:flex;align-items:center;gap:14px;justify-content:center;color:var(--gold);margin:26px 0}.ornament::before,.ornament::after{content:"";height:1px;width:min(140px,25vw);background:linear-gradient(90deg,transparent,var(--gold))}.ornament::after{transform:scaleX(-1)}
-main{position:relative;z-index:2;max-width:1120px;margin:auto;padding:42px 22px 80px}.page-title{text-align:center;margin:20px 0 44px}.page-title h1{font-size:clamp(2.8rem,7vw,5.5rem)}.page-title p{color:var(--muted)}
-.panel{position:relative;background:var(--panel);border:1px solid var(--line);padding:clamp(20px,4vw,38px);margin:22px 0;border-radius:4px;box-shadow:0 20px 55px rgba(0,0,0,.28)}
-.panel::before,.panel::after{content:"✦";position:absolute;color:var(--gold);font-size:.9rem;opacity:.7}.panel::before{top:10px;left:12px}.panel::after{right:12px;bottom:10px}
-.panel h2{font-size:clamp(2rem,4vw,3rem);margin:0 0 12px;color:#f3e7ce}.panel p,.panel li{color:#cfc3b2;line-height:1.75}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card{min-height:190px;padding:23px;border:1px solid rgba(200,164,93,.24);background:linear-gradient(145deg,rgba(65,16,24,.72),rgba(15,9,10,.95));transition:.25s ease;position:relative;overflow:hidden}
-.card::after{content:"";position:absolute;width:90px;height:90px;border:1px solid rgba(200,164,93,.22);right:-46px;top:-46px;transform:rotate(45deg)}.card:hover{transform:translateY(-4px);border-color:rgba(200,164,93,.65)}.card h3{font-size:1.8rem;margin:0 0 9px;color:#f1dfbd}
-.badge{display:inline-block;color:var(--gold);border:1px solid var(--line);padding:5px 9px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
-.map-frame{min-height:430px;display:grid;place-items:center;text-align:center;padding:30px;border:1px dashed rgba(200,164,93,.65);background:radial-gradient(circle at center,rgba(124,11,29,.26),transparent 55%),repeating-radial-gradient(circle at 50% 50%,transparent 0 32px,rgba(200,164,93,.05) 33px 34px)}
-.profile{display:grid;grid-template-columns:minmax(180px,280px) 1fr;gap:28px;align-items:stretch}.portrait{min-height:340px;border:1px solid var(--line);display:grid;place-items:center;background:linear-gradient(155deg,#3c0a13,#0b0808);color:var(--muted);text-align:center;padding:20px}
-dl{display:grid;grid-template-columns:130px 1fr;gap:10px 16px}dt{color:var(--gold)}dd{margin:0;color:#d7cbbb}
-footer{text-align:center;color:#8f8373;padding:35px 20px;border-top:1px solid rgba(200,164,93,.14)}
-@media(max-width:720px){.profile{grid-template-columns:1fr}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:10px}.site-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.site-nav a{white-space:nowrap}}
-</style></head><body>
-<nav class="site-nav" aria-label="Основное меню">
-<a href="index.html">Главная</a><a href="world.html">Мир</a><a href="characters.html">Персонажи</a><a href="magic.html">Эмердалы</a><a href="states.html">Империи и королевства</a><a href="codex.html">Кодексы</a>
-</nav>
-<section class="hero"><div class="hero-inner"><div class="kicker">Тёмное восточное фэнтези</div><h1>Душа,<br>покрытая кровью</h1><div class="hero-subtitle">Энциклопедия мира «Династия Алмааз»</div><div class="ornament">◆</div><p class="hero-copy">Мир империй и королевств, древних клятв и магии Эмердалов. В центре истории — Хансон Амилириан, чья судьба связана с тайнами династии.</p><div class="actions"><a class="btn" href="world.html">Войти в архив</a><a class="btn secondary" href="characters.html">Открыть персонажей</a></div></div></section><main><section class="grid"><article class="card"><span class="badge">Мир</span><h3>Династия Алмааз</h3><p>История земель, династий, империй и королевств.</p></article><article class="card"><span class="badge">Герой</span><h3>Хансон Амилириан</h3><p>Главный герой, его происхождение, путь и тайны.</p></article><article class="card"><span class="badge">Магия</span><h3>Эмердалы</h3><p>Система магии, её источники, законы и цена.</p></article></section></main><footer>© 2026 · «Душа, покрытая кровью»</footer></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070604">
+<title>Династия Алмааз</title>
+<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Cormorant+Infant:wght@500;600;700&family=Forum&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#050403;
+  --coal:#100d0a;
+  --bronze:#49341f;
+  --gold:#c8a35e;
+  --gold2:#f0d99d;
+  --blood:#7d1119;
+  --ivory:#efe3c8;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#050403}
+body{
+  min-height:100vh;
+  overflow:hidden;
+  color:var(--ivory);
+  font-family:"Cormorant Infant",Georgia,serif;
+}
+.scene{
+  position:relative;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 34%,rgba(107,72,34,.17),transparent 25%),
+    radial-gradient(circle at 50% 80%,rgba(111,16,24,.08),transparent 30%),
+    linear-gradient(180deg,#0d0907 0%,#080605 50%,#030302 100%);
+}
+.scene::before{
+  content:"";
+  position:absolute;inset:0;z-index:-4;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 40px,rgba(200,163,94,.025) 41px 42px),
+    repeating-linear-gradient(-45deg,transparent 0 40px,rgba(200,163,94,.018) 41px 42px);
+}
+.frame{
+  position:absolute;inset:14px;z-index:40;pointer-events:none;
+  border:1px solid rgba(200,163,94,.62);
+  box-shadow:
+    inset 0 0 0 6px rgba(28,20,12,.78),
+    inset 0 0 0 7px rgba(200,163,94,.17);
+}
+.frame::before,.frame::after{
+  content:"";
+  position:absolute;left:50%;transform:translateX(-50%);
+  width:42%;height:22px;
+  border-top:1px solid rgba(200,163,94,.62);
+  border-bottom:1px solid rgba(200,163,94,.24);
+}
+.frame::before{top:8px}
+.frame::after{bottom:8px}
+.corner{
+  position:absolute;width:130px;height:130px;z-index:42;pointer-events:none;
+}
+.corner::before,.corner::after{
+  content:"";position:absolute;border:1px solid rgba(200,163,94,.58);
+}
+.corner::before{inset:0;transform:rotate(45deg);border-radius:0 70% 0 70%}
+.corner::after{inset:28px;transform:rotate(22deg);border-radius:50%}
+.c1{left:10px;top:10px}
+.c2{right:10px;top:10px;transform:scaleX(-1)}
+.c3{left:10px;bottom:10px;transform:scaleY(-1)}
+.c4{right:10px;bottom:10px;transform:scale(-1)}
+
+.content{
+  position:relative;z-index:50;
+  width:min(820px,84vw);
+  text-align:center;
+  padding:90px 24px 115px;
+}
+.emblem{
+  width:98px;height:98px;margin:0 auto 24px;position:relative;
+  transform:rotate(45deg);
+  border:1px solid rgba(200,163,94,.76);
+  box-shadow:0 0 0 12px rgba(200,163,94,.035),0 0 32px rgba(0,0,0,.58);
+}
+.emblem::before{content:"";position:absolute;inset:19px;border:1px solid rgba(200,163,94,.5)}
+.gem{
+  position:absolute;inset:28px;border-radius:50% 50% 45% 55%;
+  background:radial-gradient(circle at 35% 30%,#ba3a42,#75131b 45%,#2b0508 74%);
+  box-shadow:0 0 18px rgba(125,17,25,.85);
+}
+.kicker{
+  color:var(--gold);font-family:"Forum",serif;
+  letter-spacing:.45em;text-transform:uppercase;font-size:.78rem;
+}
+h1{
+  margin:18px 0 10px;
+  font-family:"Almendra SC","Times New Roman",serif;
+  font-size:clamp(4rem,10vw,8.6rem);
+  line-height:.86;font-weight:400;letter-spacing:.03em;color:var(--gold2);
+  text-shadow:0 4px 0 #3d2916,0 10px 28px rgba(0,0,0,.92);
+}
+.welcome{
+  margin:28px auto 0;max-width:670px;
+  font-family:"Forum",serif;
+  font-size:clamp(1.4rem,3vw,2.2rem);
+  letter-spacing:.07em;color:#dbc58e;text-shadow:0 3px 12px #000;
+}
+.ornament{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  color:var(--gold);margin:25px auto;
+}
+.ornament::before,.ornament::after{
+  content:"";width:min(160px,22vw);height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.ornament::after{transform:scaleX(-1)}
+.enter{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  min-width:300px;padding:18px 38px;margin-top:26px;
+  border:1px solid rgba(200,163,94,.9);
+  background:linear-gradient(180deg,#2b1f16,#0f0b08);
+  color:#efd79a;font:400 clamp(1.35rem,2.7vw,2rem) "Almendra SC",serif;
+  letter-spacing:.12em;cursor:pointer;box-shadow:0 16px 44px rgba(0,0,0,.72);
+  transition:.24s ease;
+}
+.enter::before,.enter::after{
+  content:"◆";position:absolute;top:50%;transform:translateY(-50%);
+  color:var(--blood);text-shadow:0 0 8px rgba(125,17,25,.85);
+}
+.enter::before{left:18px}.enter::after{right:18px}
+.enter:hover{
+  transform:translateY(-3px);color:#fff0bd;border-color:#f0d28d;
+  box-shadow:0 18px 52px rgba(0,0,0,.82),0 0 24px rgba(125,17,25,.22);
+}
+
+/* Large eastern dragons */
+.dragon{
+  position:absolute;
+  top:4%;
+  width:min(39vw,520px);
+  height:92vh;
+  z-index:20;
+  opacity:.96;
+  filter:drop-shadow(0 24px 28px rgba(0,0,0,.95));
+}
+.dragon-left{left:-6%}
+.dragon-right{right:-6%;transform:scaleX(-1)}
+.dragon svg{width:100%;height:100%;overflow:visible}
+.dragon .body,.dragon .limb,.dragon .horn,.dragon .mane,.dragon .claw{
+  fill:#080807;stroke:#6d5432;stroke-width:1.5;
+}
+.dragon .scale-line{fill:none;stroke:#4e3a23;stroke-width:1.1;opacity:.8}
+.dragon .eye{fill:#a11721;stroke:none;filter:drop-shadow(0 0 8px #7d1119)}
+.dragon .whisker{
+  fill:none;stroke:#7a5b36;stroke-width:2;
+  stroke-linecap:round;transform-origin:180px 120px;
+  animation:whisker 3.2s ease-in-out infinite alternate;
+}
+.dragon .tail{transform-origin:180px 430px;animation:tail 5.5s ease-in-out infinite alternate}
+.dragon .mane{transform-origin:170px 150px;animation:mane 4.1s ease-in-out infinite alternate}
+.dragon:hover .eye{filter:drop-shadow(0 0 13px #b21d28)}
+@keyframes whisker{from{transform:rotate(-3deg)}to{transform:rotate(4deg)}}
+@keyframes tail{from{transform:rotate(-2deg)}to{transform:rotate(3deg)}}
+@keyframes mane{from{transform:scaleY(.98)}to{transform:scaleY(1.03)}}
+
+.mist{
+  position:absolute;left:-20%;bottom:0;width:140%;height:32%;z-index:14;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 60%,rgba(160,154,143,.16),transparent 36%),
+    radial-gradient(ellipse at 50% 50%,rgba(135,130,121,.12),transparent 34%),
+    radial-gradient(ellipse at 82% 64%,rgba(160,154,143,.15),transparent 36%);
+  filter:blur(19px);animation:mistMove 34s ease-in-out infinite alternate;
+}
+@keyframes mistMove{from{transform:translateX(-4%)}to{transform:translateX(8%)}}
+.embers{
+  position:absolute;inset:0;z-index:13;pointer-events:none;opacity:.23;
+  background-image:
+    radial-gradient(circle,rgba(255,123,45,.82) 0 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(255,190,85,.45) 0 1px,transparent 1.5px);
+  background-size:120px 120px,170px 170px;
+  background-position:0 0,40px 35px;
+  animation:embers 22s linear infinite;
+}
+@keyframes embers{to{background-position:120px -140px,210px -190px}}
+.blood-drop{
+  position:absolute;z-index:55;width:10px;height:30px;
+  border-radius:50% 50% 60% 60% / 25% 25% 75% 75%;
+  background:linear-gradient(#971923,#350507);
+  filter:drop-shadow(0 5px 6px rgba(0,0,0,.8));
+  animation:drip 4.2s ease-in-out infinite;
+}
+.d1{left:7%;top:44%;animation-delay:.2s}
+.d2{right:8%;top:37%;animation-delay:1.3s;transform:scale(.72)}
+.d3{left:31%;bottom:7%;animation-delay:2.4s;transform:scale(.55)}
+@keyframes drip{
+  0%,72%,100%{transform:translateY(0) scaleY(1);opacity:.7}
+  84%{transform:translateY(18px) scaleY(1.25);opacity:1}
+  94%{transform:translateY(40px) scaleY(.65);opacity:0}
+}
+
+.flyer{
+  position:fixed;left:-30vw;top:48%;z-index:9999;width:210px;height:96px;
+  opacity:0;pointer-events:none;filter:drop-shadow(0 12px 14px rgba(0,0,0,.95));
+}
+.flyer.fly{opacity:1;animation:flyAcross 2.25s cubic-bezier(.18,.55,.3,1) forwards}
+.flyer svg{width:100%;height:100%}
+.flyer path{fill:#020202;stroke:#171717;stroke-width:2}
+.flyer .wing-a{transform-origin:82px 42px;animation:wingA .22s ease-in-out infinite alternate}
+.flyer .wing-b{transform-origin:108px 42px;animation:wingB .22s ease-in-out infinite alternate}
+@keyframes flyAcross{
+  0%{transform:translate3d(0,50px,0) scale(.5) rotate(-6deg)}
+  48%{transform:translate3d(68vw,-65px,0) scale(1.05) rotate(2deg)}
+  100%{transform:translate3d(148vw,-130px,0) scale(.72) rotate(-8deg)}
+}
+@keyframes wingA{from{transform:rotate(-10deg)}to{transform:rotate(18deg)}}
+@keyframes wingB{from{transform:rotate(10deg)}to{transform:rotate(-18deg)}}
+.fade{
+  position:fixed;inset:0;z-index:9998;background:#050403;
+  opacity:0;pointer-events:none;transition:opacity .65s ease;
+}
+.fade.show{opacity:1}
+@media(max-width:900px){
+  .dragon{width:48vw;opacity:.72}
+  .dragon-left{left:-17%}.dragon-right{right:-17%}
+}
+@media(max-width:650px){
+  .dragon{width:68vw;opacity:.42}
+  .dragon-left{left:-34%}.dragon-right{right:-34%}
+  .content{padding-top:110px}
+  .enter{min-width:240px;padding:16px 28px}
+}
+@media(prefers-reduced-motion:reduce){
+  .dragon .whisker,.dragon .tail,.dragon .mane,.mist,.embers,.blood-drop{animation:none}
+  .flyer.fly{animation-duration:.9s}
+}
+</style>
+</head>
+<body>
+<main class="scene">
+  <div class="embers"></div>
+  <div class="mist"></div>
+  <div class="frame"></div>
+  <div class="corner c1"></div><div class="corner c2"></div>
+  <div class="corner c3"></div><div class="corner c4"></div>
+
+  <div class="dragon dragon-left" aria-hidden="true">
+    <svg viewBox="0 0 420 760" xmlns="http://www.w3.org/2000/svg">
+      <path class="body" d="M218 92 C170 84,118 104,84 146 C48 191,45 248,72 300 C95 344,136 367,151 414 C166 463,138 505,111 547 C82 593,76 648,103 709 C129 660,153 625,186 592 C223 555,242 509,231 461 C221 416,187 385,178 345 C168 304,185 266,214 236 C243 205,273 177,285 139 C296 105,277 88,218 92 Z"/>
+      <path class="tail" d="M132 548 C83 604,63 675,84 744 C102 704,132 681,168 670 C135 656,125 631,137 600 C152 563,181 542,204 510 C178 517,153 531,132 548 Z"/>
+      <path class="limb" d="M153 360 C111 356,78 373,57 407 C83 393,109 391,131 403 C106 416,91 438,87 469 C114 444,143 438,174 447 Z"/>
+      <path class="limb" d="M189 477 C226 466,258 477,283 508 C251 495,225 500,204 521 C229 528,247 545,257 573 C229 555,203 555,177 571 Z"/>
+      <path class="mane" d="M129 144 C102 111,107 75,136 48 C132 80,144 98,171 111 C174 78,191 53,221 38 C207 74,211 101,232 125 C200 126,164 133,129 144 Z"/>
+      <path class="horn" d="M138 96 C104 71,88 40,94 10 C111 45,134 60,165 63 Z"/>
+      <path class="horn" d="M176 82 C164 46,174 18,205 0 C196 34,204 56,228 74 Z"/>
+      <path class="mane" d="M96 176 C57 153,36 122,38 85 C58 122,86 139,120 141 Z"/>
+      <path class="body" d="M116 149 C139 121,178 111,214 122 C252 134,273 164,265 196 C257 226,224 244,189 239 C158 235,133 216,116 190 Z"/>
+      <path class="horn" d="M118 162 C83 146,58 120,47 89 C75 119,102 127,134 124 Z"/>
+      <path class="mane" d="M108 189 C72 187,42 202,21 232 C53 215,81 217,105 234 Z"/>
+      <circle class="eye" cx="179" cy="163" r="5"/>
+      <path class="body" d="M189 181 C216 179,238 188,252 207 C228 199,210 204,195 221 C183 211,181 196,189 181 Z"/>
+      <path class="claw" d="M68 408 l-18 22 24-10 -8 20 22-15 10-17Z"/>
+      <path class="claw" d="M273 510 l18 22 -24-10 8 20 -22-15 -10-17Z"/>
+      <path class="whisker" d="M174 182 C116 175,73 188,36 218"/>
+      <path class="whisker" d="M181 187 C123 197,86 223,56 260"/>
+      <path class="scale-line" d="M153 258 C182 272,204 294,214 325"/>
+      <path class="scale-line" d="M145 299 C176 314,194 337,198 365"/>
+      <path class="scale-line" d="M150 410 C176 424,193 447,197 474"/>
+      <path class="scale-line" d="M129 527 C151 542,165 560,168 583"/>
+    </svg>
+  </div>
+
+  <div class="dragon dragon-right" aria-hidden="true">
+    <svg viewBox="0 0 420 760" xmlns="http://www.w3.org/2000/svg">
+      <path class="body" d="M218 92 C170 84,118 104,84 146 C48 191,45 248,72 300 C95 344,136 367,151 414 C166 463,138 505,111 547 C82 593,76 648,103 709 C129 660,153 625,186 592 C223 555,242 509,231 461 C221 416,187 385,178 345 C168 304,185 266,214 236 C243 205,273 177,285 139 C296 105,277 88,218 92 Z"/>
+      <path class="tail" d="M132 548 C83 604,63 675,84 744 C102 704,132 681,168 670 C135 656,125 631,137 600 C152 563,181 542,204 510 C178 517,153 531,132 548 Z"/>
+      <path class="limb" d="M153 360 C111 356,78 373,57 407 C83 393,109 391,131 403 C106 416,91 438,87 469 C114 444,143 438,174 447 Z"/>
+      <path class="limb" d="M189 477 C226 466,258 477,283 508 C251 495,225 500,204 521 C229 528,247 545,257 573 C229 555,203 555,177 571 Z"/>
+      <path class="mane" d="M129 144 C102 111,107 75,136 48 C132 80,144 98,171 111 C174 78,191 53,221 38 C207 74,211 101,232 125 C200 126,164 133,129 144 Z"/>
+      <path class="horn" d="M138 96 C104 71,88 40,94 10 C111 45,134 60,165 63 Z"/>
+      <path class="horn" d="M176 82 C164 46,174 18,205 0 C196 34,204 56,228 74 Z"/>
+      <path class="mane" d="M96 176 C57 153,36 122,38 85 C58 122,86 139,120 141 Z"/>
+      <path class="body" d="M116 149 C139 121,178 111,214 122 C252 134,273 164,265 196 C257 226,224 244,189 239 C158 235,133 216,116 190 Z"/>
+      <path class="horn" d="M118 162 C83 146,58 120,47 89 C75 119,102 127,134 124 Z"/>
+      <path class="mane" d="M108 189 C72 187,42 202,21 232 C53 215,81 217,105 234 Z"/>
+      <circle class="eye" cx="179" cy="163" r="5"/>
+      <path class="body" d="M189 181 C216 179,238 188,252 207 C228 199,210 204,195 221 C183 211,181 196,189 181 Z"/>
+      <path class="claw" d="M68 408 l-18 22 24-10 -8 20 22-15 10-17Z"/>
+      <path class="claw" d="M273 510 l18 22 -24-10 8 20 -22-15 -10-17Z"/>
+      <path class="whisker" d="M174 182 C116 175,73 188,36 218"/>
+      <path class="whisker" d="M181 187 C123 197,86 223,56 260"/>
+      <path class="scale-line" d="M153 258 C182 272,204 294,214 325"/>
+      <path class="scale-line" d="M145 299 C176 314,194 337,198 365"/>
+      <path class="scale-line" d="M150 410 C176 424,193 447,197 474"/>
+      <path class="scale-line" d="M129 527 C151 542,165 560,168 583"/>
+    </svg>
+  </div>
+
+  <span class="blood-drop d1"></span>
+  <span class="blood-drop d2"></span>
+  <span class="blood-drop d3"></span>
+
+  <section class="content">
+    <div class="emblem"><div class="gem"></div></div>
+    <div class="kicker">Тёмное восточное фэнтези</div>
+    <h1>Династия<br>Алмааз</h1>
+    <div class="ornament">◆</div>
+    <p class="welcome">Добро пожаловать в Династию Алмааз.</p>
+    <button class="enter" id="enterWorld" type="button">Войти в мир</button>
+  </section>
+</main>
+
+<div class="flyer" id="flyer" aria-hidden="true">
+  <svg viewBox="0 0 190 90" xmlns="http://www.w3.org/2000/svg">
+    <path class="wing-a" d="M87 43 C61 12,29 7,4 10 C25 23,35 39,43 61 C55 48,69 44,87 43Z"/>
+    <path class="wing-b" d="M101 43 C128 12,160 8,186 12 C166 25,154 40,146 62 C133 49,119 45,101 43Z"/>
+    <path d="M72 43 C79 31,94 28,106 36 C119 44,126 58,120 67 C107 61,95 57,82 62 C77 55,73 49,72 43Z"/>
+    <path d="M115 41 C135 36,151 40,163 51 C146 50,134 55,122 65Z"/>
+    <path d="M80 39 C67 30,57 26,47 29 C58 34,64 41,68 50Z"/>
+  </svg>
+</div>
+<div class="fade" id="fade"></div>
+
+<script>
+const button=document.getElementById("enterWorld");
+const flyer=document.getElementById("flyer");
+const fade=document.getElementById("fade");
+button.addEventListener("click",()=>{
+  button.disabled=true;
+  flyer.classList.remove("fly");
+  void flyer.offsetWidth;
+  flyer.classList.add("fly");
+  setTimeout(()=>fade.classList.add("show"),1450);
+  setTimeout(()=>window.location.href="world.html",2200);
+});
+</script>
+</body>
+</html>

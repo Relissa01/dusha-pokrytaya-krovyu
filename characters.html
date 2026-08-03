@@ -1,32 +1,560 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#090707"><title>Персонажи — Душа, покрытая кровью</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marck+Script&family=Montserrat:wght@300;400;500;600&display=swap');
-:root{--ink:#090707;--wine:#3b0710;--blood:#7c0b1d;--gold:#c8a45d;--ivory:#efe5d1;--muted:#b8aa95;--panel:rgba(22,13,14,.88);--line:rgba(200,164,93,.38)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;color:var(--ivory);background:radial-gradient(circle at 18% 18%,rgba(124,11,29,.20),transparent 31%),radial-gradient(circle at 82% 10%,rgba(200,164,93,.08),transparent 28%),linear-gradient(180deg,#090707 0%,#13090b 48%,#080606 100%);font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(45deg,transparent 47%,rgba(200,164,93,.18) 48%,rgba(200,164,93,.18) 49%,transparent 50%),linear-gradient(-45deg,transparent 47%,rgba(200,164,93,.11) 48%,rgba(200,164,93,.11) 49%,transparent 50%);background-size:58px 58px}
-a{color:inherit}.site-nav{position:sticky;top:0;z-index:50;display:flex;justify-content:center;flex-wrap:wrap;gap:6px;padding:10px 14px;background:rgba(8,5,5,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-.site-nav a{text-decoration:none;padding:10px 13px;border-radius:999px;color:#eadfc9;font-size:.86rem;letter-spacing:.04em;transition:.25s ease}.site-nav a:hover,.site-nav a:focus{background:rgba(124,11,29,.45);color:#fff;outline:none}
-.hero{position:relative;min-height:92vh;padding:90px 24px 70px;display:grid;place-items:center;text-align:center;overflow:hidden}
-.hero::before,.hero::after{content:"";position:absolute;width:390px;height:390px;border:1px solid var(--line);transform:rotate(45deg);opacity:.42}.hero::before{top:-210px;left:-120px}.hero::after{right:-170px;bottom:-230px}
-.hero-inner{position:relative;z-index:2;max-width:900px}.kicker{text-transform:uppercase;letter-spacing:.38em;color:var(--gold);font-size:.72rem;margin-bottom:24px}
-h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:.02em}h1{margin:0;font-size:clamp(3.1rem,9vw,7.4rem);line-height:.88;font-weight:600;text-shadow:0 7px 35px rgba(124,11,29,.65)}
-.hero-subtitle{margin:24px auto 8px;color:var(--gold);font-family:"Marck Script",cursive;font-size:clamp(1.45rem,3vw,2.35rem)}.hero-copy{max-width:680px;margin:22px auto;color:#d4c9b7;line-height:1.85}
-.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-block;text-decoration:none;padding:13px 22px;border:1px solid var(--gold);border-radius:3px;color:#f5ead5;background:linear-gradient(180deg,#781027,#510714);box-shadow:0 12px 30px rgba(0,0,0,.35);transition:.25s ease}.btn.secondary{background:transparent}.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
-.ornament{display:flex;align-items:center;gap:14px;justify-content:center;color:var(--gold);margin:26px 0}.ornament::before,.ornament::after{content:"";height:1px;width:min(140px,25vw);background:linear-gradient(90deg,transparent,var(--gold))}.ornament::after{transform:scaleX(-1)}
-main{position:relative;z-index:2;max-width:1120px;margin:auto;padding:42px 22px 80px}.page-title{text-align:center;margin:20px 0 44px}.page-title h1{font-size:clamp(2.8rem,7vw,5.5rem)}.page-title p{color:var(--muted)}
-.panel{position:relative;background:var(--panel);border:1px solid var(--line);padding:clamp(20px,4vw,38px);margin:22px 0;border-radius:4px;box-shadow:0 20px 55px rgba(0,0,0,.28)}
-.panel::before,.panel::after{content:"✦";position:absolute;color:var(--gold);font-size:.9rem;opacity:.7}.panel::before{top:10px;left:12px}.panel::after{right:12px;bottom:10px}
-.panel h2{font-size:clamp(2rem,4vw,3rem);margin:0 0 12px;color:#f3e7ce}.panel p,.panel li{color:#cfc3b2;line-height:1.75}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}.card{min-height:190px;padding:23px;border:1px solid rgba(200,164,93,.24);background:linear-gradient(145deg,rgba(65,16,24,.72),rgba(15,9,10,.95));transition:.25s ease;position:relative;overflow:hidden}
-.card::after{content:"";position:absolute;width:90px;height:90px;border:1px solid rgba(200,164,93,.22);right:-46px;top:-46px;transform:rotate(45deg)}.card:hover{transform:translateY(-4px);border-color:rgba(200,164,93,.65)}.card h3{font-size:1.8rem;margin:0 0 9px;color:#f1dfbd}
-.badge{display:inline-block;color:var(--gold);border:1px solid var(--line);padding:5px 9px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
-.map-frame{min-height:430px;display:grid;place-items:center;text-align:center;padding:30px;border:1px dashed rgba(200,164,93,.65);background:radial-gradient(circle at center,rgba(124,11,29,.26),transparent 55%),repeating-radial-gradient(circle at 50% 50%,transparent 0 32px,rgba(200,164,93,.05) 33px 34px)}
-.profile{display:grid;grid-template-columns:minmax(180px,280px) 1fr;gap:28px;align-items:stretch}.portrait{min-height:340px;border:1px solid var(--line);display:grid;place-items:center;background:linear-gradient(155deg,#3c0a13,#0b0808);color:var(--muted);text-align:center;padding:20px}
-dl{display:grid;grid-template-columns:130px 1fr;gap:10px 16px}dt{color:var(--gold)}dd{margin:0;color:#d7cbbb}
-footer{text-align:center;color:#8f8373;padding:35px 20px;border-top:1px solid rgba(200,164,93,.14)}
-@media(max-width:720px){.profile{grid-template-columns:1fr}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:10px}.site-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.site-nav a{white-space:nowrap}}
-</style></head><body>
-<nav class="site-nav" aria-label="Основное меню">
-<a href="index.html">Главная</a><a href="world.html">Мир</a><a href="characters.html">Персонажи</a><a href="magic.html">Эмердалы</a><a href="states.html">Империи и королевства</a><a href="codex.html">Кодексы</a>
-</nav>
-<main><header class="page-title"><div class="kicker">Династия Алмааз</div><h1>Персонажи</h1><p> Добро пожаловать в Династию Алмааз.</p><div class="ornament">◆</div></header><section class="panel profile"><div class="portrait">Место для портрета<br>Хансона Амилириана</div><div><span class="badge">Главный герой</span><h2>Хансон Амилириан</h2><dl><dt>Происхождение</dt><dd>Заполнить</dd><dt>Возраст</dt><dd>Заполнить</dd><dt>Статус</dt><dd>Заполнить</dd><dt>Связь с магией</dt><dd>Заполнить</dd></dl><p>Добавьте биографию, характер, цели, страхи, союзников и противников героя.</p></div></section><section class="grid"><article class="card"><h3>Союзник</h3><p>Имя и описание персонажа.</p></article><article class="card"><h3>Противник</h3><p>Имя и описание персонажа.</p></article><article class="card"><h3>Представитель династии</h3><p>Имя и описание персонажа.</p></article></section></main><footer>© 2026 · «Душа, покрытая кровью» · Энциклопедия мира «Династия Алмааз»</footer></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090705">
+<title>Персонажи — Династия Алмааз</title>
+<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Cormorant+Infant:wght@400;500;600;700&family=Forum&display=swap" rel="stylesheet">
+<style>
+:root{
+ --black:#080604;--coal:#120e0a;--panel:#18120d;--panel2:#211810;
+ --gold:#c6a15a;--gold2:#efd79b;--ivory:#eee2c8;--muted:#b8aa91;
+ --blood:#74121a;--line:rgba(198,161,90,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;min-height:100vh;color:var(--ivory);
+ background:
+  radial-gradient(circle at 50% 0,rgba(112,74,34,.15),transparent 28%),
+  linear-gradient(180deg,#0d0907,#080604 55%,#040302);
+ font-family:"Cormorant Infant",Georgia,serif;
+}
+body::before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.14;
+ background-image:
+  repeating-linear-gradient(45deg,transparent 0 42px,rgba(198,161,90,.09) 43px 44px),
+  repeating-linear-gradient(-45deg,transparent 0 42px,rgba(198,161,90,.05) 43px 44px);
+}
+header{
+ position:relative;padding:70px 20px 38px;text-align:center;
+ border-bottom:1px solid var(--line);
+ background:linear-gradient(180deg,rgba(0,0,0,.25),transparent);
+ overflow:hidden;
+}
+header::before,header::after{
+ content:"";position:absolute;top:24px;width:210px;height:1px;
+ background:linear-gradient(90deg,transparent,var(--gold));
+}
+header::before{left:4%} header::after{right:4%;transform:scaleX(-1)}
+.kicker{font-family:"Forum",serif;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);font-size:.72rem}
+h1{font:400 clamp(3rem,8vw,6.6rem)/.9 "Almendra SC",serif;margin:14px 0;color:var(--gold2);text-shadow:0 8px 28px #000}
+.lead{max-width:760px;margin:auto;color:#cdbd9e;font-size:1.2rem}
+.nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:24px}
+.nav a{color:#e5d4b0;text-decoration:none;border:1px solid var(--line);padding:9px 14px;background:rgba(20,14,10,.72)}
+
+.controls{
+ position:sticky;top:0;z-index:100;
+ display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:10px;
+ padding:14px max(18px,calc((100vw - 1240px)/2));
+ background:rgba(8,6,4,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ border-bottom:1px solid var(--line);
+}
+input,select,button{
+ width:100%;border:1px solid var(--line);background:#16100c;color:var(--ivory);
+ padding:12px 13px;font:600 1rem "Cormorant Infant",serif;border-radius:3px;
+}
+button{cursor:pointer}
+button:hover{border-color:var(--gold);background:#251a11}
+.count{grid-column:1/-1;color:var(--muted);font-size:.95rem;padding-left:2px}
+
+.grid{
+ width:min(1240px,calc(100% - 28px));margin:30px auto 70px;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px;
+}
+.card{
+ position:relative;min-height:360px;overflow:hidden;cursor:pointer;
+ border:1px solid var(--line);
+ background:linear-gradient(160deg,#21170f,#0e0b08 70%);
+ box-shadow:0 18px 50px rgba(0,0,0,.34);
+ transition:.25s ease;
+}
+.card:hover{transform:translateY(-5px);border-color:rgba(239,215,155,.7);box-shadow:0 24px 60px rgba(0,0,0,.48)}
+.portrait{
+ height:205px;display:grid;place-items:center;position:relative;overflow:hidden;
+ background:
+  radial-gradient(circle at 50% 28%,color-mix(in srgb,var(--accent) 42%,transparent),transparent 38%),
+  linear-gradient(150deg,color-mix(in srgb,var(--accent) 28%,#0b0806),#080604 74%);
+}
+.portrait::before{
+ content:"";position:absolute;width:120px;height:160px;border-radius:48% 48% 44% 44%;
+ background:linear-gradient(180deg,rgba(238,226,200,.16),rgba(0,0,0,.34));
+ box-shadow:0 0 0 1px rgba(239,215,155,.16),0 18px 30px rgba(0,0,0,.45);
+}
+.initials{position:relative;z-index:2;font:400 3.1rem "Almendra SC",serif;color:#f1ddae;text-shadow:0 5px 15px #000}
+.badge{position:absolute;top:12px;right:12px;z-index:3;padding:5px 9px;border:1px solid var(--line);background:rgba(8,6,4,.78);font-size:.78rem;color:#e5c77d}
+.card-body{padding:18px}
+.card h2{font:400 1.75rem/1.05 "Almendra SC",serif;margin:0;color:#f1d99c}
+.nick{color:#af9362;font-style:italic;margin:6px 0 12px}
+.meta{display:flex;gap:7px;flex-wrap:wrap}
+.meta span{font-size:.82rem;color:#c8b99f;border:1px solid rgba(198,161,90,.22);padding:5px 8px;background:rgba(255,255,255,.025)}
+.magic{margin-top:13px;color:#ddd0b7;line-height:1.4}
+.empty{grid-column:1/-1;text-align:center;padding:70px 20px;color:#bda989;border:1px solid var(--line)}
+
+.modal{
+ position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;
+ padding:18px;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)
+}
+.modal.open{display:flex}
+.sheet{
+ width:min(980px,100%);max-height:92vh;overflow:auto;position:relative;
+ border:1px solid rgba(198,161,90,.65);
+ background:linear-gradient(145deg,#241910,#0e0b08 78%);
+ box-shadow:0 30px 100px rgba(0,0,0,.72);
+}
+.close{position:sticky;top:12px;float:right;z-index:5;width:42px;height:42px;margin:12px;border-radius:50%;font-size:1.5rem}
+.hero{display:grid;grid-template-columns:280px 1fr;min-height:300px;border-bottom:1px solid var(--line)}
+.hero-portrait{display:grid;place-items:center;background:radial-gradient(circle at center,color-mix(in srgb,var(--accent) 42%,transparent),transparent 45%),#0b0806;min-height:300px}
+.hero-portrait .initials{font-size:5rem}
+.hero-copy{padding:35px 30px}
+.type{color:var(--gold);letter-spacing:.18em;text-transform:uppercase;font-size:.72rem}
+.hero h2{font:400 clamp(2.5rem,6vw,4.8rem)/.92 "Almendra SC",serif;margin:9px 0;color:#f1d99c}
+.hero .nick{font-size:1.25rem}
+.fact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);margin-top:22px}
+.fact-grid div{background:#17110d;padding:11px 13px}
+.fact-grid strong{display:block;color:#cba75f;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em}
+.details{padding:28px 30px 38px}
+.details h3{font:400 1.55rem "Almendra SC",serif;color:#e8ca83;margin:24px 0 8px}
+.details p{color:#d8ccb4;line-height:1.65;margin:0}
+.info-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.info{border:1px solid rgba(198,161,90,.25);padding:14px;background:rgba(255,255,255,.025)}
+.info b{display:block;color:#caa45c;margin-bottom:5px}
+
+@media(max-width:760px){
+ .controls{grid-template-columns:1fr 1fr;padding:10px}
+ .controls input{grid-column:1/-1}
+ .controls button{grid-column:1/-1}
+ .hero{grid-template-columns:1fr}
+ .hero-portrait{min-height:210px}
+ .hero-copy{padding:24px 20px}
+ .fact-grid,.info-list{grid-template-columns:1fr}
+ .details{padding:22px 20px 30px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:calc(100% - 16px)}
+ .card{min-height:320px}
+ .portrait{height:165px}
+ .card-body{padding:14px}
+ .card h2{font-size:1.35rem}
+}
+@media(max-width:460px){
+ .grid{grid-template-columns:1fr}
+ .portrait{height:190px}
+}
+
+/* PALACE EXPERIENCE */
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(130,92,42,.18),transparent 31%),
+    linear-gradient(180deg,#0c0907 0%,#080604 48%,#040302 100%);
+}
+.palace-bg{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;overflow:hidden;
+}
+.marble{
+  position:absolute;inset:0;opacity:.36;
+  background:
+    linear-gradient(115deg,transparent 0 37%,rgba(255,255,255,.035) 38%,transparent 39%),
+    linear-gradient(72deg,transparent 0 63%,rgba(198,161,90,.04) 64%,transparent 65%),
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.025),transparent 24%),
+    radial-gradient(circle at 80% 70%,rgba(255,255,255,.018),transparent 28%);
+  background-size:320px 320px,420px 420px,100% 100%,100% 100%;
+  filter:contrast(1.15);
+}
+.palace-columns{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,.75) 0 5%,
+      rgba(91,63,31,.17) 5.2% 7.5%,
+      transparent 8% 92%,
+      rgba(91,63,31,.17) 92.5% 94.8%,
+      rgba(0,0,0,.75) 95% 100%);
+}
+.palace-arches{
+  position:absolute;left:4%;right:4%;top:0;height:36vh;
+  border:1px solid rgba(198,161,90,.09);
+  border-radius:0 0 48% 48%;
+  box-shadow:inset 0 -45px 90px rgba(0,0,0,.25);
+}
+.eastern-pattern{
+  position:absolute;inset:0;opacity:.13;
+  background-image:
+    linear-gradient(45deg,transparent 46%,rgba(198,161,90,.34) 47% 53%,transparent 54%),
+    linear-gradient(-45deg,transparent 46%,rgba(198,161,90,.22) 47% 53%,transparent 54%);
+  background-size:86px 86px;
+}
+.fog-layer,.fog-layer-2{
+  position:fixed;left:-25%;width:150%;height:28%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 60%,rgba(188,180,161,.15),transparent 34%),
+    radial-gradient(ellipse at 52% 55%,rgba(165,158,145,.11),transparent 31%),
+    radial-gradient(ellipse at 84% 62%,rgba(188,180,161,.14),transparent 35%);
+  filter:blur(18px);
+}
+.fog-layer{bottom:0;animation:palaceFog 34s ease-in-out infinite alternate}
+.fog-layer-2{top:24%;opacity:.45;animation:palaceFog2 46s ease-in-out infinite alternate}
+@keyframes palaceFog{from{transform:translateX(-4%)}to{transform:translateX(8%)}}
+@keyframes palaceFog2{from{transform:translateX(7%)}to{transform:translateX(-8%)}}
+.ash{
+  position:fixed;inset:0;pointer-events:none;z-index:80;opacity:.22;
+  background-image:
+    radial-gradient(circle,rgba(224,209,180,.75) 0 1px,transparent 1.4px),
+    radial-gradient(circle,rgba(153,132,102,.48) 0 1px,transparent 1.5px);
+  background-size:120px 120px,175px 175px;
+  background-position:0 0,45px 35px;
+  animation:ashFall 24s linear infinite;
+}
+@keyframes ashFall{to{background-position:80px 220px,190px 300px}}
+.candle{
+  position:fixed;bottom:14%;z-index:30;width:10px;height:90px;border-radius:3px;
+  background:linear-gradient(90deg,#5b4227,#d0aa68,#6f4f2f);
+  box-shadow:0 0 10px rgba(215,174,93,.18);
+}
+.candle::before{
+  content:"";position:absolute;left:50%;top:-22px;width:14px;height:26px;
+  transform:translateX(-50%);
+  border-radius:50% 50% 45% 45%;
+  background:radial-gradient(circle at 50% 65%,#fff5bf 0 14%,#f4b149 30%,#9c4218 58%,transparent 62%);
+  filter:drop-shadow(0 0 10px rgba(255,178,72,.85));
+  animation:flame 1.8s ease-in-out infinite alternate;
+}
+.candle-left{left:3%}.candle-right{right:3%}
+@keyframes flame{from{transform:translateX(-50%) rotate(-2deg) scaleY(.95)}to{transform:translateX(-50%) rotate(3deg) scaleY(1.08)}}
+
+.audio-dock{
+  position:fixed;right:14px;bottom:14px;z-index:150;
+  display:flex;align-items:center;gap:8px;
+  padding:8px 10px;border:1px solid var(--line);
+  background:rgba(13,9,7,.86);backdrop-filter:blur(10px);
+}
+.audio-dock button{width:auto;padding:8px 12px}
+.audio-dock span{color:#cbb893;font-size:.9rem}
+
+.quick-filters{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin:18px auto 0;max-width:1050px;
+}
+.quick-filter{
+  width:auto;border-radius:999px;padding:9px 13px;
+  background:rgba(22,16,12,.88);
+}
+.quick-filter.active{
+  background:linear-gradient(180deg,#4a3521,#24170f);
+  border-color:#e0bd73;color:#fff0c2;
+  box-shadow:0 0 16px rgba(198,161,90,.18);
+}
+
+/* Golden living cards */
+.card{
+  border:1px solid rgba(198,161,90,.52);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.42),
+    inset 0 0 0 5px rgba(198,161,90,.035);
+}
+.card::before{
+  content:"";position:absolute;inset:7px;z-index:5;pointer-events:none;
+  border:1px solid rgba(198,161,90,.18);
+}
+.card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(circle at 50% 32%,rgba(241,215,155,.14),transparent 34%);
+  transition:.25s ease;
+}
+.card:hover::after,.card.touched::after{opacity:1}
+.card:hover,.card.touched{
+  border-color:#e5c77f;
+  box-shadow:0 24px 62px rgba(0,0,0,.55),0 0 22px rgba(198,161,90,.2),inset 0 0 0 5px rgba(198,161,90,.055);
+}
+.portrait::after{
+  content:"";position:absolute;left:50%;top:42%;width:50px;height:8px;
+  transform:translate(-50%,-50%);opacity:0;
+  background:
+    radial-gradient(circle at 18% 50%,rgba(255,231,141,.95) 0 2px,transparent 3px),
+    radial-gradient(circle at 82% 50%,rgba(255,231,141,.95) 0 2px,transparent 3px);
+  filter:drop-shadow(0 0 6px rgba(255,209,94,.9));
+  transition:.25s ease;
+}
+.card:hover .portrait::after,.card.touched .portrait::after{opacity:1}
+.card .card-body{transform:translateY(9px);transition:.25s ease}
+.card:hover .card-body,.card.touched .card-body{transform:translateY(0)}
+.card .card-body h2,.card .nick{opacity:.78;transition:.25s ease}
+.card:hover .card-body h2,.card:hover .nick,.card.touched .card-body h2,.card.touched .nick{opacity:1}
+
+/* Scroll opening */
+.sheet{
+  transform:scale(.9) rotateX(8deg);
+  transform-origin:center;
+  opacity:0;
+}
+.modal.open .sheet{
+  animation:scrollOpen .55s cubic-bezier(.2,.75,.2,1) forwards;
+}
+@keyframes scrollOpen{
+  0%{transform:scale(.82) rotateX(14deg);opacity:0}
+  70%{transform:scale(1.02) rotateX(0);opacity:1}
+  100%{transform:scale(1);opacity:1}
+}
+.sheet::before,.sheet::after{
+  content:"";position:absolute;left:16px;right:16px;height:18px;z-index:4;pointer-events:none;
+  background:linear-gradient(180deg,#7a5a33,#c7a35d 45%,#4c351f);
+  border-radius:999px;box-shadow:0 5px 14px rgba(0,0,0,.4);
+}
+.sheet::before{top:-9px}.sheet::after{bottom:-9px}
+
+.icon-strip{
+  display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:8px;margin-top:26px;
+}
+.icon-item{
+  text-align:center;border:1px solid rgba(198,161,90,.24);
+  background:rgba(255,255,255,.025);padding:12px 8px;
+}
+.icon-item span{display:block;font-size:1.35rem;margin-bottom:4px}
+.icon-item small{color:#c6b593}
+
+@media(max-width:760px){
+ .candle{display:none}
+ .audio-dock{left:10px;right:10px;bottom:10px;justify-content:center}
+ .icon-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .quick-filters{padding:0 10px;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+ .quick-filter{white-space:nowrap}
+}
+
+
+.real-portrait{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;
+ filter:saturate(.88) contrast(1.06) brightness(.82);
+ transition:transform .5s ease,filter .35s ease;
+}
+.card:hover .real-portrait,.card.touched .real-portrait{
+ transform:scale(1.045);
+ filter:saturate(1.02) contrast(1.08) brightness(.93);
+}
+.portrait.has-image::before{display:none}
+.portrait.has-image .initials{display:none}
+.hero-portrait.has-image{overflow:hidden}
+.hero-portrait.has-image .initials{display:none}
+.hero-real-portrait{
+ width:100%;height:100%;min-height:300px;object-fit:cover;object-position:center top;
+ filter:saturate(.9) contrast(1.07) brightness(.85);
+}
+@media(max-width:760px){
+ .hero-real-portrait{min-height:260px;max-height:420px}
+}
+
+</style>
+</head>
+<body>
+<div class="palace-bg" aria-hidden="true">
+  <div class="marble"></div>
+  <div class="palace-columns"></div>
+  <div class="palace-arches"></div>
+  <div class="eastern-pattern"></div>
+</div>
+<div class="fog-layer"></div>
+<div class="fog-layer-2"></div>
+<div class="ash"></div>
+<div class="candle candle-left"></div>
+<div class="candle candle-right"></div>
+
+
+<header>
+ <div class="kicker">Кодекс Династии Алмааз</div>
+ <h1>Зал судеб</h1>
+ <p class="lead">Правители, наследники, воины, стриксы и носители Эмердалов. Найдите персонажа по имени, государству или роли.</p>
+ <nav class="nav">
+  <a href="index.html">Главная</a>
+  <a href="world.html">Карта мира</a>
+ </nav>
+ <div class="quick-filters" id="quickFilters">
+  <button class="quick-filter active" data-kind="all">Все</button>
+  <button class="quick-filter" data-kind="empire">👑 Императорства</button>
+  <button class="quick-filter" data-kind="kingdom">🏰 Королевства</button>
+  <button class="quick-filter" data-kind="military">⚔ Военные</button>
+  <button class="quick-filter" data-kind="magic">✨ Маги</button>
+  <button class="quick-filter" data-kind="emerdal">💎 Эмердалы</button>
+  <button class="quick-filter" data-kind="family">👨‍👩‍👧 Семьи</button>
+ </div>
+</header>
+
+<section class="controls">
+ <input id="search" type="search" placeholder="Поиск по имени, прозвищу, магии…">
+ <select id="stateFilter"><option value="">Все государства</option></select>
+ <select id="roleFilter"><option value="">Все роли</option></select>
+ <button id="resetBtn" type="button">Сбросить</button>
+ <div class="count" id="count"></div>
+</section>
+
+<main class="grid" id="grid"></main>
+
+<div class="modal" id="modal" aria-hidden="true">
+ <article class="sheet" id="sheet">
+  <button class="close" id="closeBtn" aria-label="Закрыть">×</button>
+  <section class="hero">
+   <div class="hero-portrait" id="modalPortrait"><span class="initials" id="modalInitials"></span></div>
+   <div class="hero-copy">
+    <div class="type" id="modalType"></div>
+    <h2 id="modalName"></h2>
+    <div class="nick" id="modalNick"></div>
+    <div class="fact-grid" id="factGrid"></div>
+   </div>
+  </section>
+  <section class="details">
+   <h3>Характер</h3><p id="modalPersonality"></p>
+   <h3>Цель</h3><p id="modalGoal"></p>
+   <div class="info-list" id="infoList"></div>
+   <div class="icon-strip" id="iconStrip"></div>
+  </section>
+ </article>
+</div>
+
+<div class="audio-dock">
+ <button type="button" id="musicBtn">▶ Музыка</button>
+ <span>Тихая музыка дворца</span>
+ <audio id="palaceAudio" loop preload="metadata">
+  <source src="palace_ambient.wav" type="audio/wav">
+ </audio>
+</div>
+<script>
+const characters = [{"name": "Хансон Амилириан", "nickname": "Хан, Луч солнца", "age": "7 — потерялся; 15 — в начале; 21 — погибает", "birthday": "2 Зуль-хиджа", "state": "Династия Амилириан", "faction": "Руис", "role": "Наследник фараона", "status": "Погибает", "magic": "Изменение реальности через прикосновение", "weakness": "Боится одиночества; считает, что другие делают его слабым", "weapon": "Вакидзаси", "emerdal": "Белый агат", "appearance": "Тёмно-карие глаза; тёмно-каштановые волосы с золотистыми прядями", "height": "1,79 м", "personality": "Высокомерный и надменный, серьёзный, самолюбивый, но переживает за друзей и хранит обиду на отца.", "goal": "Отомстить отцу за смерть матери и найти сторонников среди других государств.", "relations": "Женится на Зейфарин, но ненадолго.", "family": "Отец Хейсон, мать Аннисана, сёстры Сана и Сиара.", "color": "#b58a52", "image": "character-images/hanson-amilirian.jpg"}, {"name": "Хейсон Амилириан", "nickname": "Гравитон", "age": "49", "birthday": "24 Раджаб", "state": "Династия Амилириан", "faction": "Руис", "role": "Фараон", "status": "Жив", "magic": "Гравитация", "weakness": "Маленькое пространство и младшая дочь", "weapon": "Ruger Redhawk", "emerdal": "Оникс-сардоникс", "appearance": "Карие глаза, короткие чёрные волосы, зачёсанные назад, короткая борода", "height": "1,78 м", "personality": "После усиления власти стал более эгоистичным и жадным; ради власти не пожалел собственного сына.", "goal": "Править до конца жизни и не лишаться власти.", "relations": "После смерти жены не вступал в отношения.", "family": "Жена Аннисана; дети Хансон, Сана и Сиара.", "color": "#7a512f", "image": "character-images/heyson-amilirian.jpg"}, {"name": "Аннисана Амилириан", "nickname": "Мать природы", "age": "35 — умерла", "birthday": "18 Сафар", "state": "Династия Амилириан", "faction": "Руис", "role": "Великая царица", "status": "Мертва", "magic": "Сила природы и понимание животных", "weakness": "Страх за детей; не могла касаться химических веществ", "weapon": "Не использовала", "emerdal": "Лабрадор", "appearance": "Тёмно-зелёные глаза, золотисто-каштановое каре", "height": "1,71 м", "personality": "Добрая, спокойная, с примерным нравом; после потери сына стала молчаливой и мрачной.", "goal": "Хотела увидеть свадьбы детей.", "relations": "Жена Хейсона.", "family": "Муж Хейсон; дети Хансон, Сана и Сиара.", "color": "#56734a", "image": "character-images/annisana-amilirian.jpg"}, {"name": "Сана Амилириан", "nickname": "Пепел, Честь Династии", "age": "19", "birthday": "18 Джумада-аль-уля", "state": "Династия Амилириан", "faction": "Руис", "role": "Главнокомандующая", "status": "Жива", "magic": "Превращает предметы в пепел, но не людей", "weakness": "Её доброту считают слабостью", "weapon": "Собственные руки", "emerdal": "Изумруд, ранг 1", "appearance": "Тёмно-зелёные глаза, пепельные волосы до плеч", "height": "1,69 м", "personality": "Добрая, защищает слабых и борется с несправедливостью.", "goal": "Справедливо сражаться за династию и быть примером для младшей сестры.", "relations": "Свадьба с Лорканом.", "family": "Отец Хейсон, мать Аннисана, брат Хансон, сестра Сиара.", "color": "#657866", "image": "character-images/sana-amilirian.jpg"}, {"name": "Сиара Амилириан", "nickname": "Душа семьи", "age": "13", "birthday": "10 Раби аль-авваль", "state": "Династия Амилириан", "faction": "Руис", "role": "Младшая дочь фараона, допросщица", "status": "Жива", "magic": "Управление разумом", "weakness": "Большое количество голосов и избыток информации", "weapon": "Нет", "emerdal": "Не раскрыт", "appearance": "Тёмно-карие глаза, длинные каштановые волосы", "height": "1,45 м", "personality": "Самая младшая в семье, многого не понимает, но безумно любит близких.", "goal": "Хочет счастливо жить.", "relations": "Слишком юна.", "family": "Отец Хейсон, мать Аннисана, брат Хансон, сестра Сана.", "color": "#8c5a47", "image": "character-images/siara-amilirian.jpg"}, {"name": "Азхар Иллариан", "nickname": "Одарённый", "age": "33", "birthday": "4 Рамадан", "state": "Королевство Киан", "faction": "Киан", "role": "Король", "status": "Жив", "magic": "Управление материей, телепатия, высокая скорость", "weakness": "Замедление времени", "weapon": "Кусаригама", "emerdal": "Красный агат, ранг 3", "appearance": "Чёрные густые волосы и чёрные глаза", "height": "1,88 м", "personality": "Преданный своим делам, честный, не даёт пощады.", "goal": "Защитить семью и растить детей.", "relations": "Муж Риммы.", "family": "Жена Римма, сыновья Айнар и Осамус.", "color": "#7b2630", "image": "character-images/azhar-illarian.jpg"}, {"name": "Римма Иллариан", "nickname": "Воительница", "age": "31", "birthday": "7 Мухаррам", "state": "Королевство Киан", "faction": "Киан", "role": "Королева", "status": "Жива", "magic": "Световые лучи, телепатия, высокая скорость", "weakness": "Замедление времени", "weapon": "Катана", "emerdal": "Радужный оникс", "appearance": "Длинные густые чёрные волосы, чёрные глаза", "height": "1,79 м", "personality": "Сильная, гордая, честная, трудолюбивая и непреклонная.", "goal": "Защитить семью и растить детей.", "relations": "Жена Азхара.", "family": "Муж Азхар, сыновья Айнар и Осамус.", "color": "#ded2b8", "image": "character-images/rimma-illarian.jpg"}, {"name": "Айнар Иллариан", "nickname": "Рамзес", "age": "17", "birthday": "10 Рамадан", "state": "Королевство Киан", "faction": "Киан", "role": "Наследник", "status": "Жив", "magic": "Карты, Джансар, телепатия, контроль разума", "weakness": "Замедление времени; не управляет гневом", "weapon": "Двойная катана и острые карты", "emerdal": "Чёрный агат, ранг 1", "appearance": "Чёрные густые волосы, чёрные глаза", "height": "1,86 м", "personality": "Сильный, бесстрашный, справедливый, умный, любит шутить, но бывает жестоким.", "goal": "Защитить брата и жену, наказать виновных, при необходимости пожертвовать собой.", "relations": "Жена Айлинда.", "family": "Родители Азхар и Римма, младший брат Осамус.", "color": "#25232c", "image": "character-images/aynar-illarian.jpg"}, {"name": "Осамус Иллариан", "nickname": "Пожиратель", "age": "14 → 18", "birthday": "10 Рамадан", "state": "Королевство Киан", "faction": "Киан", "role": "Наследник", "status": "Жив", "magic": "Пустота Джансар, телепатия, материя и пространство", "weakness": "Замедление времени; не управляет гневом", "weapon": "Кусаригама", "emerdal": "Матовый содалит, ранг 1", "appearance": "Чёрные густые волосы, чёрные глаза", "height": "1,80 м", "personality": "Сильный, честный и справедливый, но жестокий и бессердечный до встречи с братом.", "goal": "Месть.", "relations": "Любит Зейфарин, но они не будут вместе.", "family": "Родители Азхар и Римма, брат Айнар.", "color": "#2f374f", "image": "character-images/osamus-illarian.jpg"}, {"name": "Санджар Джамиль", "nickname": "Грозный", "age": "36", "birthday": "30 Сафар", "state": "Королевство Санджар", "faction": "Санджар", "role": "Король", "status": "Жив", "magic": "Управление температурой", "weakness": "Манипуляция разумом и физическая нагрузка", "weapon": "АК-47", "emerdal": "Красный агат, ранг 3", "appearance": "Белые волосы, зачёсанные назад, карие глаза", "height": "1,91 м", "personality": "Наглый, преданный, честолюбивый и строгий; ставит положение выше чувств.", "goal": "Стать императором.", "relations": "Муж Изис.", "family": "Жена Изис, дочь Айлинда, сын Айдар.", "color": "#d7d1c4", "image": "character-images/sandzhar-dzhamil.jpg"}, {"name": "Изис Джаман", "nickname": "Нимфа", "age": "34", "birthday": "28 Шабан", "state": "Королевство Санджар", "faction": "Санджар", "role": "Королева", "status": "Жива", "magic": "Управление водой", "weakness": "Как у других представителей её линии", "weapon": "Боевой веер tessen", "emerdal": "Прозрачный обсидиан, ранг 3", "appearance": "Длинные белые волосы, светло-голубые глаза", "height": "1,82 м", "personality": "Мудрая, красивая, сентиментальная и чувствительная; поддерживает мужа.", "goal": "Выдать дочь замуж за великого человека.", "relations": "Жена Санджара.", "family": "Муж Санджар, дочь Айлинда, сын Айдар.", "color": "#d9e3e7", "image": "character-images/izis-dzhaman.jpg"}, {"name": "Айдар Джамиль", "nickname": "Океанос, Дитя моря", "age": "19", "birthday": "13 Раби аль-авваль", "state": "Королевство Санджар", "faction": "Санджар", "role": "Наследник", "status": "Жив", "magic": "Управление водой и океанами", "weakness": "Остановленное время и электричество", "weapon": "Водяной меч", "emerdal": "Голубой обсидиан, ранг 2", "appearance": "Белые волосы, светло-голубые глаза", "height": "1,88 м", "personality": "Хладнокровный, проницательный, умный политик; защищает сестру.", "goal": "Быть опорой семьи и стоять за её честь.", "relations": "Интересуется Вальторией из-за её ума.", "family": "Отец Санджар, мать Изис, сестра Айлинда.", "color": "#4d7fa8", "image": "character-images/aydar-dzhamil.jpg"}, {"name": "Айлинда Джаман", "nickname": "Эльфийка, Холодный огонёк", "age": "17", "birthday": "10 Зуль-хиджа", "state": "Королевство Санджар", "faction": "Санджар", "role": "Джаман королевства", "status": "Жива", "magic": "Синее пламя и форма феникса", "weakness": "Остановленное время", "weapon": "Лук с карбон-алюминиевыми стрелами", "emerdal": "Оникс-сардоникс, ранг 1", "appearance": "Белые волосы с голубыми концами, тёмно-голубые глаза", "height": "1,55 м", "personality": "Игривая, величественная, настойчивая, капризная и самолюбивая.", "goal": "Участвовать в турнире и выиграть.", "relations": "Жена Айнара.", "family": "Отец Санджар, мать Изис, брат Айдар.", "color": "#6ba8d8", "image": "character-images/aylinda-dzhaman.jpg"}, {"name": "Комэй Миллен", "nickname": "Усатый", "age": "51", "birthday": "12 Раби аль-авваль", "state": "Императорство Саид", "faction": "Саид", "role": "Император", "status": "Жив", "magic": "Управление металлом и изменение траектории пуль", "weakness": "Чувствителен к стихиям; боится землетрясений", "weapon": "Металлическое ружьё с шипами", "emerdal": "Коричневый содалит, ранг 3", "appearance": "Тёмно-серые глаза, седые волосы и усы", "height": "1,70 м", "personality": "Высокомерный и наглый, но преданный.", "goal": "Умереть с честью, став шахидом на поле боя.", "relations": "Муж Эльвиры.", "family": "Жена Эльвира, сыновья Меранд и Джерд.", "color": "#48546b", "image": "character-images/komey-millen.jpg"}, {"name": "Эльвира Миллен", "nickname": "Ведьма", "age": "49", "birthday": "9 Шабан", "state": "Императорство Саид", "faction": "Саид", "role": "Императрица", "status": "Жива", "magic": "Телекинез", "weakness": "Большие объекты, сильные эмоции, управление разумом, телепатия и антигравитация", "weapon": "Комэй не разрешает", "emerdal": "Опал-радуга Девы, ранг 2", "appearance": "Тёмно-жёлтые глаза, светлые кудрявые волосы до плеч", "height": "1,67 м", "personality": "Амбициозная, острая умом, политически проницательная и хитрая.", "goal": "Посадить детей на трон.", "relations": "Жена Комэя.", "family": "Муж Комэй, сыновья Меранд и Джерд.", "color": "#9a7835", "image": "character-images/elvira-millen.jpg"}, {"name": "Меранд Миллен", "nickname": "Вампир", "age": "27", "birthday": "17 Шавваль", "state": "Императорство Саид", "faction": "Саид", "role": "Наследный Саид", "status": "Жив", "magic": "Стихия земли", "weakness": "Гравитация и стихия воздуха", "weapon": "Ауробластер", "emerdal": "Прозрачный обсидиан, ранг 3", "appearance": "Тёмно-жёлтые глаза, чёрные волосы", "height": "1,75 м", "personality": "Хитрый, злой, завистливый; презирает и слабых, и сильных.", "goal": "Взойти на престол.", "relations": "Берёт в жёны Субхиду из Алхана.", "family": "Отец Комэй, мать Эльвира, брат Джерд.", "color": "#33404c", "image": "character-images/merand-millen.jpg"}, {"name": "Джерд Миллен", "nickname": "Разрушитель", "age": "22", "birthday": "11 Шавваль", "state": "Императорство Саид", "faction": "Саид", "role": "Младший Саид", "status": "Жив", "magic": "Сверхсила и разрушение", "weakness": "Гравитация и стихия воздуха", "weapon": "Молот", "emerdal": "Опал-комета, ранг 3", "appearance": "Тёмно-жёлтые глаза, светлые волосы", "height": "1,77 м", "personality": "Сильный духом, преданный, уважительный, старается быть похожим на отца.", "goal": "Быть опорой отца.", "relations": "Должен был жениться на Сане, но она выбрала Лоркана.", "family": "Отец Комэй, мать Эльвира, брат Меранд.", "color": "#a8864c", "image": "character-images/dzherd-millen.jpg"}, {"name": "Кейнан Маалел", "nickname": "Кейн, Молодой правитель", "age": "26", "birthday": "6 Зу-ль-Када", "state": "Императорство Бексултан", "faction": "Бексултан", "role": "Император", "status": "Жив", "magic": "Холод и лёд", "weakness": "Гравитация", "weapon": "Механический меч формы тати", "emerdal": "Золотой обсидиан, ранг 1", "appearance": "Голубые глаза, чёрные растрёпанные волосы", "height": "1,78 м", "personality": "Серьёзный, смышлёный; понимает гикксосов и считает отношение к ним несправедливым.", "goal": "Отложить власть и обзавестись детьми.", "relations": "Муж Цилы.", "family": "Отец Энош, сестра Араселли, жена Цила.", "color": "#577487", "image": "character-images/keynan-maalel.jpg"}, {"name": "Араселли Маалел", "nickname": "Луноликая, Острый клинок", "age": "15", "birthday": "19 Шабан", "state": "Императорство Бексултан", "faction": "Бексултан", "role": "Бону императорства", "status": "Жива", "magic": "Холодное оружие", "weakness": "Любая стихия", "weapon": "Тати", "emerdal": "Аквамарин", "appearance": "Длинные рыжие волосы, голубые глаза", "height": "1,50 м; позже 1,68 м", "personality": "Самоуверенная, злопамятная, не теряет контроль.", "goal": "Отомстить брату за разлуку с родителями.", "relations": "Невеста Сагаба.", "family": "Отец, брат Кейнан.", "color": "#b36a45", "image": "character-images/araselli-maalel.jpg"}, {"name": "Ямин Булатов", "nickname": "Гроза Династии", "age": "41", "birthday": "27 Джумада-аль-ахира", "state": "Империя Шахбулат", "faction": "Шахбулат", "role": "Шахбулат", "status": "Жив", "magic": "Буря и гроза", "weakness": "Солнце", "weapon": "Механический меч", "emerdal": "Оникс-сардоникс, ранг 1", "appearance": "Тёмно-жёлтые глаза, чёрные волосы", "height": "1,73 м", "personality": "Сильный духом и уверен, что всегда прав из-за своей силы.", "goal": "Быть рядом с сыном и помогать фараону; не доверяет Саиду.", "relations": "Один.", "family": "Жена умерла, сын Анан.", "color": "#5a4f48", "image": "character-images/yamin-bulatov.jpg"}, {"name": "Анан Булатов", "nickname": "Дитя бури", "age": "17", "birthday": "21 Раджаб", "state": "Империя Шахбулат", "faction": "Шахбулат", "role": "Будущий Шахбулат", "status": "Жив", "magic": "Удары по болевым точкам и обездвиживание", "weakness": "Железо и гравитация", "weapon": "Механические ё-ё", "emerdal": "Содалит с вырезками, ранг 2", "appearance": "Карие глаза, короткие светлые волосы", "height": "1,76 м", "personality": "Смешливый, потрясён смертью матери, поддерживает отца.", "goal": "Чтобы отец всегда им гордился.", "relations": "Один.", "family": "Отец Ямин.", "color": "#b99358", "image": "character-images/anan-bulatov.jpg"}, {"name": "Калису Аэстарион", "nickname": "Нембус", "age": "44", "birthday": "10 Раби аль-авваль", "state": "Гикксосы", "faction": "Гикксосы", "role": "Нембус и путеводитель", "status": "Жив", "magic": "Управление временем", "weakness": "Путает воспоминания; усталость", "weapon": "Кинжал; ранее — шёлковые нити пальцев", "emerdal": "У стриксов нет Эмердалов", "appearance": "Жёлтые глаза, длинные жёлто-красные волосы", "height": "1,87 м", "personality": "Лукавый, саркастичный, не знает этикета и морали; хочет стать нормальным человеком.", "goal": "Стать нормальным человеком и достичь цели предков.", "relations": "Есть наложницы, но не более.", "family": "Сестра Фален.", "color": "#8d2b2f", "image": "character-images/kalisu-aestarion.jpg"}, {"name": "Зейфарин Беллемонт", "nickname": "Фея Фейри", "age": "15", "birthday": "23 Джумада-аль-уля", "state": "Гикксосы", "faction": "Гикксосы", "role": "Шпион и информатор", "status": "Жива", "magic": "Телепортация и телекинез", "weakness": "Остановленное время", "weapon": "Алебарда", "emerdal": "Малахит, ранг 2", "appearance": "Чёрные волосы до колен, чёрные глаза", "height": "1,65 м", "personality": "Гордая, воинственная, бесстрашная и смелая.", "goal": "Не совершать ошибок и выбрать правильную сторону.", "relations": "Жена Хансона.", "family": "Брат Нирос, правая рука Нембуса.", "color": "#6f3035", "image": "character-images/zeyfarin-bellemont.jpg"}, {"name": "Равандор", "nickname": "Проводник", "age": "21", "birthday": "9 Шавваль", "state": "Караванная Конфедерация", "faction": "Стриксы", "role": "Разведчик", "status": "Жив", "magic": "Манипуляция тенями", "weakness": "Милые вещи и всё, что кажется слабым", "weapon": "Боевые перчатки", "emerdal": "У стриксов нет Эмердалов", "appearance": "Серое тело, длинные серые волосы и серые глаза", "height": "1,91 м", "personality": "Серьёзный, хладнокровный, верующий и ранимый.", "goal": "Убить Снейла.", "relations": "Влюблён в мирную девушку из Алхана.", "family": "Мать и брат Сагаб; Снейл уничтожил семью.", "color": "#4b4b50", "image": "character-images/ravandor.jpg"}, {"name": "Сагаб Аанджи", "nickname": "Теневой Сагаб", "age": "16", "birthday": "11 Зу-ль-Када", "state": "Первая рота", "faction": "Руис", "role": "Вице-командир", "status": "Жив", "magic": "Управление тенью и сокрытие", "weakness": "Остановленное время", "weapon": "Вакидзаси", "emerdal": "Жёлтый изумруд, ранг 2", "appearance": "Чёрные волосы, серые глаза", "height": "1,75 м", "personality": "Не ищет драк, но вспыльчив; боится и не перечит.", "goal": "Чтобы его признали и им гордились.", "relations": "Влюблён в Араселли.", "family": "Семья погибла; брат Равандор.", "color": "#3f4650", "image": "character-images/sagab-aandzhi.jpg"}, {"name": "Лоркан Суннар", "nickname": "Гений, Молниеносный", "age": "17", "birthday": "28 Мухаррам", "state": "Первая рота", "faction": "Руис", "role": "Командир первой роты", "status": "Жив", "magic": "Молния и молниеносная скорость", "weakness": "Остановленное время", "weapon": "Нунчаки", "emerdal": "Содалит с вырезками, ранг 2", "appearance": "Кудрявые чёрные волосы, карие глаза", "height": "1,77 м", "personality": "Забавный, юморной, гордый и самолюбивый.", "goal": "Сражаться с сильными и научиться проигрывать.", "relations": "Сана Амилириан.", "family": "Семья погибла.", "color": "#77633a", "image": "character-images/lorkan-sunnar.jpg"}, {"name": "Мекбуда и Мебсуда", "nickname": "Близнецы", "age": "16", "birthday": "23 Мухаррам", "state": "Королевство Алхан", "faction": "Алхан", "role": "Наследницы", "status": "Живы", "magic": "Мекбуда — земля; Мебсуда — ветер", "weakness": "Друг друга; Мекбуда боится темноты и молнии, Мебсуда — воды", "weapon": "Терра-посох и кинжалы", "emerdal": "Лабрадор и аметист", "appearance": "Длинные каштановые волосы и зелёные глаза", "height": "1,74 м", "personality": "Мекбуда спокойная и справедливая; Мебсуда неуравновешенная и не контролирует гнев.", "goal": "Свобода и неприкосновенность.", "relations": "В будущем связаны с близнецами гикксосами.", "family": "Мать, отец и младшая сестра.", "color": "#5f7f64", "image": "character-images/mekbuda-i-mebsuda.jpg"}];
+
+const grid=document.getElementById("grid");
+const search=document.getElementById("search");
+const stateFilter=document.getElementById("stateFilter");
+const roleFilter=document.getElementById("roleFilter");
+const count=document.getElementById("count");
+const modal=document.getElementById("modal");
+let quickKind="all";
+const palaceAudio=document.getElementById("palaceAudio");
+const musicBtn=document.getElementById("musicBtn");
+
+function initials(name){
+ return name.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase();
+}
+function optionList(select,values){
+ [...new Set(values)].sort((a,b)=>a.localeCompare(b,"ru")).forEach(v=>{
+   const o=document.createElement("option");o.value=v;o.textContent=v;select.appendChild(o);
+ });
+}
+optionList(stateFilter,characters.map(c=>c.state));
+optionList(roleFilter,characters.map(c=>c.role));
+
+function card(c,index){
+ const el=document.createElement("article");
+ el.className="card";
+ el.style.setProperty("--accent",c.color);
+ el.innerHTML=`
+  <div class="portrait ${c.image?"has-image":""}">
+   ${c.image?`<img class="real-portrait" src="${c.image}" alt="${c.name}" loading="lazy">`:""}
+   <span class="badge">${c.status}</span>
+   <span class="initials">${initials(c.name)}</span>
+  </div>
+  <div class="card-body">
+   <h2>${c.name}</h2>
+   <div class="nick">${c.nickname}</div>
+   <div class="meta"><span>${c.state}</span><span>${c.role}</span></div>
+   <div class="magic">${c.magic}</div>
+  </div>`;
+ el.addEventListener("touchstart",()=>el.classList.add("touched"),{passive:true});
+ el.addEventListener("touchend",()=>setTimeout(()=>el.classList.remove("touched"),700),{passive:true});
+ el.addEventListener("click",()=>openModal(c));
+ return el;
+}
+
+function matchQuick(c){
+ const s=(c.state+" "+c.role+" "+c.magic+" "+c.emerdal+" "+c.family).toLowerCase();
+ if(quickKind==="all") return true;
+ if(quickKind==="empire") return /император|фараон|шахбулат|импер/.test(s);
+ if(quickKind==="kingdom") return /королев|киан|санджар|алхан/.test(s);
+ if(quickKind==="military") return /командир|разведчик|воин|арм|рота|главнокоманд/.test(s);
+ if(quickKind==="magic") return !/нет|не использовала/.test(c.magic.toLowerCase());
+ if(quickKind==="emerdal") return !/нет эмердалов|не раскрыт/.test(c.emerdal.toLowerCase());
+ if(quickKind==="family") return c.family && c.family.length>8;
+ return true;
+}
+function render(){
+ const q=search.value.trim().toLowerCase();
+ const state=stateFilter.value, role=roleFilter.value;
+ const filtered=characters.filter(c=>{
+   const hay=[c.name,c.nickname,c.magic,c.weapon,c.emerdal,c.state,c.role,c.faction].join(" ").toLowerCase();
+   return (!q||hay.includes(q))&&(!state||c.state===state)&&(!role||c.role===role)&&matchQuick(c);
+ });
+ grid.innerHTML="";
+ if(!filtered.length){
+   grid.innerHTML='<div class="empty">Персонажи не найдены.</div>';
+ } else filtered.forEach((c,i)=>grid.appendChild(card(c,i)));
+ count.textContent=`Показано: ${filtered.length} из ${characters.length}`;
+}
+[search,stateFilter,roleFilter].forEach(el=>el.addEventListener("input",render));
+document.getElementById("resetBtn").addEventListener("click",()=>{
+ search.value="";stateFilter.value="";roleFilter.value="";render();
+});
+
+function openModal(c){
+ document.getElementById("modalPortrait").style.setProperty("--accent",c.color);
+ const modalPortrait=document.getElementById("modalPortrait");
+ modalPortrait.classList.toggle("has-image",Boolean(c.image));
+ modalPortrait.querySelectorAll(".hero-real-portrait").forEach(x=>x.remove());
+ if(c.image){
+  const img=document.createElement("img");
+  img.className="hero-real-portrait";
+  img.src=c.image;
+  img.alt=c.name;
+  modalPortrait.prepend(img);
+ }
+ document.getElementById("modalInitials").textContent=initials(c.name);
+ document.getElementById("modalType").textContent=`${c.state} · ${c.role}`;
+ document.getElementById("modalName").textContent=c.name;
+ document.getElementById("modalNick").textContent=c.nickname;
+ document.getElementById("modalPersonality").textContent=c.personality;
+ document.getElementById("modalGoal").textContent=c.goal;
+ const facts=[["Возраст",c.age],["День рождения",c.birthday],["Рост",c.height],["Статус",c.status]];
+ document.getElementById("factGrid").innerHTML=facts.map(x=>`<div><strong>${x[0]}</strong>${x[1]}</div>`).join("");
+ const info=[
+  ["Сила",c.magic],["Слабость",c.weakness],["Оружие",c.weapon],["Эмердал",c.emerdal],
+  ["Внешность",c.appearance],["Отношения",c.relations],["Семья",c.family],["Фракция",c.faction]
+ ];
+ document.getElementById("infoList").innerHTML=info.map(x=>`<div class="info"><b>${x[0]}</b>${x[1]}</div>`).join("");
+ const icons=[
+  ["⚔","Оружие",c.weapon],
+  ["💎","Эмердал",c.emerdal],
+  ["👨‍👩‍👧","Семья",c.family],
+  ["◈","Статус",c.status],
+  ["🏛","Государство",c.state]
+ ];
+ document.getElementById("iconStrip").innerHTML=icons.map(x=>`<div class="icon-item" title="${x[2]}"><span>${x[0]}</span><small>${x[1]}</small></div>`).join("");
+ modal.classList.add("open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";
+}
+function closeModal(){
+ modal.classList.remove("open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";
+}
+document.getElementById("closeBtn").addEventListener("click",closeModal);
+modal.addEventListener("click",e=>{if(e.target===modal)closeModal()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+
+document.querySelectorAll(".quick-filter").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  document.querySelectorAll(".quick-filter").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+  quickKind=btn.dataset.kind;
+  render();
+ });
+});
+
+musicBtn.addEventListener("click",async()=>{
+ try{
+  if(palaceAudio.paused){
+   await palaceAudio.play();
+   musicBtn.textContent="❚❚ Пауза";
+  }else{
+   palaceAudio.pause();
+   musicBtn.textContent="▶ Музыка";
+  }
+ }catch(e){
+  musicBtn.textContent="▶ Нажмите ещё раз";
+ }
+});
+render();
+</script>
+</body>
+</html>

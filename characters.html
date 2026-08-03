@@ -21,7 +21,7 @@ body{
   linear-gradient(180deg,#0d0907,#080604 55%,#040302);
  font-family:"Cormorant Infant",Georgia,serif;
 }
-body:
+<body>
  <div class="bismillah">
 
     <div class="symbol">﷽</div>
@@ -29,9 +29,9 @@ body:
     <div class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
 </div>
-
-<header>
- :before{
+<style>
+header::before
+ {
  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.14;
  background-image:
   repeating-linear-gradient(45deg,transparent 0 42px,rgba(198,161,90,.09) 43px 44px),

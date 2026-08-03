@@ -15,7 +15,15 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
+body{<div class="bismillah">
+
+    <div class="symbol">﷽</div>
+
+    <div class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+
+</div>
+
+<header>
   margin:0;min-height:100vh;color:var(--ivory);
   font-family:"Cormorant Infant",Georgia,serif;
   background:

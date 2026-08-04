@@ -7,7 +7,7 @@
 <title>Династия Алмааз — Тёмная карта мира</title>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Cormorant+Infant:wght@400;500;600;700&family=Forum&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Amiri:wght@400;700&family=Cormorant+Infant:wght@400;500;600;700&family=Forum&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -24,17 +24,7 @@
 }
 *{box-sizing:border-box}
 html,body,#map{height:100%;margin:0}
-</style>
-<body>
-<div class="bismillah">
-    <div class="symbol">﷽</div>
-    <div class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-    
-</div>
-
-<header></header>
-<style>
-header{
+body{
  overflow:hidden;
  background:#080706;
  color:var(--ivory);
@@ -83,7 +73,7 @@ header{
 @keyframes fogMove2{from{transform:translateX(7%)}to{transform:translateX(-8%)}}
 
 .topbar{
- position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:1000;
+ position:absolute;top:108px;left:50%;transform:translateX(-50%);z-index:1000;
  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
  width:min(920px,calc(100% - 30px))
 }
@@ -109,7 +99,7 @@ header{
 .layer-btn.active{box-shadow:0 0 0 2px rgba(198,161,90,.12),0 10px 28px rgba(0,0,0,.34)}
 
 .intro{
- position:absolute;left:18px;top:82px;z-index:950;
+ position:absolute;left:18px;top:156px;z-index:950;
  width:min(360px,calc(100% - 36px));
  padding:20px;
  background:linear-gradient(145deg,var(--glass2),var(--glass));
@@ -158,9 +148,9 @@ header{
 .audio-wrap audio{width:100%;height:34px;filter:grayscale(1) sepia(.25)}
 
 .detail-card{
- position:absolute;right:18px;top:82px;z-index:980;
+ position:absolute;right:18px;top:156px;z-index:980;
  width:min(400px,calc(100% - 36px));
- max-height:calc(100vh - 105px);
+ max-height:calc(100vh - 178px);
  overflow:auto;
  padding:22px;
  background:linear-gradient(145deg,rgba(39,29,21,.97),rgba(13,11,9,.98));
@@ -255,16 +245,253 @@ header{
 .utility-btn{border-radius:3px}
 
 @media(max-width:780px){
- .topbar{top:8px;overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap;padding-bottom:4px}
+ .topbar{top:98px;overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap;padding-bottom:4px}
  .layer-btn{white-space:nowrap}
- .intro{top:64px;left:10px;width:calc(100% - 20px);max-height:34vh;overflow:auto;padding:15px}
+ .intro{top:150px;left:10px;width:calc(100% - 20px);max-height:34vh;overflow:auto;padding:15px}
  .intro h1{font-size:2rem}
  .detail-card{top:auto;right:10px;bottom:10px;width:calc(100% - 20px);max-height:56vh}
  .bottom-tools{left:10px;bottom:10px}
 }
+
+.bismillah-bar{
+ position:fixed;
+ top:0;
+ left:0;
+ right:0;
+ z-index:1300;
+ min-height:92px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ padding:8px 64px 10px;
+ text-align:center;
+ background:linear-gradient(180deg,rgba(8,6,5,.98),rgba(14,10,8,.92));
+ border-bottom:1px solid rgba(198,161,90,.52);
+ box-shadow:0 12px 38px rgba(0,0,0,.48);
+ backdrop-filter:blur(14px);
+ -webkit-backdrop-filter:blur(14px);
+}
+.bismillah-symbol{
+ color:#d6b66e;
+ font-family:"Amiri","Times New Roman",serif;
+ font-size:34px;
+ line-height:1;
+ text-shadow:0 0 18px rgba(198,161,90,.35);
+}
+.bismillah-text{
+ margin-top:3px;
+ color:#f0dfb6;
+ font-family:"Amiri","Times New Roman",serif;
+ font-size:clamp(19px,2.3vw,28px);
+ line-height:1.25;
+ direction:rtl;
+ unicode-bidi:isolate;
+ white-space:nowrap;
+}
+.bismillah-home{
+ position:absolute;
+ left:16px;
+ top:50%;
+ transform:translateY(-50%);
+ color:#e8d7b0;
+ text-decoration:none;
+ border:1px solid rgba(198,161,90,.42);
+ background:rgba(30,22,16,.84);
+ padding:8px 11px;
+ font-weight:700;
+}
+.bismillah-home:hover{
+ border-color:#d6b66e;
+ color:#fff0c6;
+}
+
+
+@media(max-width:780px){
+ .bismillah-bar{
+  min-height:88px;
+  padding:7px 46px 9px;
+ }
+ .bismillah-symbol{font-size:28px}
+ .bismillah-text{
+  font-size:18px;
+  white-space:normal;
+ }
+ .bismillah-home{
+  left:8px;
+  padding:7px 8px;
+  font-size:.8rem;
+ }
+}
+@media(max-width:420px){
+ .bismillah-bar{padding-left:42px;padding-right:8px}
+ .bismillah-symbol{font-size:25px}
+ .bismillah-text{font-size:16px}
+}
+
+
+/* UPDATED POLITICAL MARKERS */
+.map-marker{
+ position:absolute;
+ transform:translate(-50%,-50%);
+ z-index:720;
+ border:0;
+ background:transparent;
+ color:#f4dfaa;
+ cursor:pointer;
+ font-family:"Cormorant Infant",Georgia,serif;
+ text-align:center;
+ padding:0;
+}
+.map-marker .marker-core{
+ width:34px;height:34px;
+ display:grid;place-items:center;
+ margin:0 auto 5px;
+ border-radius:50%;
+ border:1px solid rgba(214,182,110,.76);
+ background:radial-gradient(circle at 35% 30%,rgba(255,240,194,.24),rgba(45,29,17,.92));
+ box-shadow:0 0 16px rgba(214,182,110,.18),0 8px 18px rgba(0,0,0,.55);
+ transition:.22s ease;
+}
+.map-marker .marker-label{
+ display:block;
+ white-space:nowrap;
+ padding:3px 7px;
+ font-size:.78rem;
+ color:#ecd7a8;
+ background:rgba(8,6,5,.74);
+ border:1px solid rgba(198,161,90,.24);
+ text-shadow:0 2px 6px #000;
+}
+.map-marker:hover .marker-core,
+.map-marker:focus .marker-core{
+ transform:scale(1.12);
+ border-color:#f0d690;
+ box-shadow:0 0 24px rgba(214,182,110,.33);
+}
+.map-marker[data-kind="village"] .marker-core{border-color:rgba(151,192,130,.72)}
+.map-marker[data-kind="market"] .marker-core{border-color:rgba(209,154,78,.82)}
+.map-marker[data-kind="caravan"] .marker-core{
+ border-color:rgba(205,181,126,.82);
+ animation:caravanPulse 2.8s ease-in-out infinite alternate;
+}
+@keyframes caravanPulse{
+ from{transform:translateY(0);filter:brightness(.9)}
+ to{transform:translateY(-3px);filter:brightness(1.16)}
+}
+.world-card{
+ position:fixed;
+ left:50%;top:50%;
+ transform:translate(-50%,-50%) scale(.94);
+ width:min(720px,calc(100% - 28px));
+ max-height:86vh;
+ overflow:auto;
+ z-index:1600;
+ display:none;
+ color:#ede2c9;
+ background:
+  radial-gradient(circle at 50% 0,rgba(114,78,38,.16),transparent 32%),
+  linear-gradient(145deg,#21160f,#0d0907 78%);
+ border:1px solid rgba(214,182,110,.66);
+ box-shadow:0 35px 110px rgba(0,0,0,.78);
+ opacity:0;
+}
+.world-card.open{
+ display:block;
+ animation:worldCardOpen .34s ease forwards;
+}
+@keyframes worldCardOpen{
+ to{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+.world-card::before{
+ content:"";
+ position:absolute;inset:8px;
+ border:1px solid rgba(214,182,110,.13);
+ pointer-events:none;
+}
+.world-card-close{
+ position:sticky;
+ top:12px;
+ float:right;
+ z-index:3;
+ width:42px;height:42px;
+ margin:12px;
+ border-radius:50%;
+ border:1px solid rgba(214,182,110,.42);
+ background:#17100c;
+ color:#f2ddb0;
+ font-size:1.45rem;
+ cursor:pointer;
+}
+.world-card-content{padding:34px 32px 36px}
+.world-card-type{
+ color:#c7a76a;
+ letter-spacing:.18em;
+ text-transform:uppercase;
+ font-size:.72rem;
+}
+.world-card h2{
+ margin:8px 0 16px;
+ font:400 clamp(2.2rem,6vw,4rem)/.95 "Almendra SC",serif;
+ color:#f1d99b;
+}
+.world-card dl{
+ display:grid;
+ grid-template-columns:180px 1fr;
+ gap:1px;
+ background:rgba(198,161,90,.2);
+ margin:18px 0 0;
+}
+.world-card dt,.world-card dd{
+ margin:0;padding:12px 13px;
+ background:#17100c;
+}
+.world-card dt{color:#cba760;font-weight:700}
+.world-card p{line-height:1.62;color:#d9ceb8}
+.world-overlay{
+ position:fixed;inset:0;
+ z-index:1500;
+ display:none;
+ background:rgba(0,0,0,.78);
+ backdrop-filter:blur(7px);
+}
+.world-overlay.open{display:block}
+.settlement-panel{
+ position:absolute;
+ right:18px;
+ bottom:90px;
+ z-index:910;
+ width:min(310px,calc(100% - 36px));
+ padding:14px;
+ border:1px solid rgba(198,161,90,.34);
+ background:rgba(11,8,6,.86);
+ backdrop-filter:blur(12px);
+ box-shadow:0 16px 40px rgba(0,0,0,.45);
+}
+.settlement-panel h3{
+ margin:0 0 8px;
+ color:#e6c985;
+ font:400 1.35rem "Almendra SC",serif;
+}
+.settlement-panel p{margin:0;color:#c8b99d;line-height:1.45;font-size:.92rem}
+@media(max-width:760px){
+ .map-marker .marker-label{font-size:.68rem}
+ .map-marker .marker-core{width:30px;height:30px}
+ .world-card-content{padding:28px 18px 26px}
+ .world-card dl{grid-template-columns:1fr}
+ .settlement-panel{right:10px;bottom:78px}
+}
+
 </style>
 </head>
 <body>
+
+<div class="bismillah-bar">
+ <a class="bismillah-home" href="index.html">Главная</a>
+ <div class="bismillah-symbol" aria-hidden="true">﷽</div>
+ <div class="bismillah-text" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+</div>
+
 
 <div id="map"></div>
 <div class="ember-glow"></div>
@@ -285,7 +512,7 @@ header{
  <div class="subtitle">Тёмная карта восточных земель</div>
  <div class="ornament">◆</div>
  <p><b>Религия мира — ислам.</b> Вера определяет право, образование, придворный этикет и повседневную жизнь.</p>
- <p><b>Главный конфликт:</b> борьба Гиксосов и Руис за право определять будущее Династии Алмааз.</p>
+ <p><b>Главный конфликт:</b> борьба Гиксосов и Руис за власть, торговые пути и право определять будущее Династии Алмааз.</p>
  <div class="audio-wrap">
   <audio controls loop preload="metadata">
    <source src="dark_eastern_ambient.wav" type="audio/wav">
@@ -329,37 +556,37 @@ const cards={
   type:"Столица и вольный город",
   title:"Руис",
   history:"Руис вырос на пересечении караванных дорог и речных переправ. Город стал политическим сердцем мира, но его богатство сделало его главной целью Гиксосов. Двор Руис удерживает равновесие между империями, торговыми домами и религиозными учёными.",
-  facts:[["Правитель","Хейсон Амилириан"],["Армия","Меджаи- защитники, городское ополчение и конные разведчики"],["Население","Купцы, ремесленники, учёные, дипломаты и переселенцы"],["Значение","Центр дипломатии, торговли и борьбы против Гиксосов"]]
+  facts:[["Правитель","Амир Фарид ибн Рашан"],["Армия","Гвардия Золотого полумесяца, городское ополчение и конные разведчики"],["Население","Купцы, ремесленники, учёные, дипломаты и переселенцы"],["Значение","Центр дипломатии, торговли и борьбы против Гиксосов"]]
  },
  "shahn":{
-  type:"Империя",title:"Империя Шахбулат",
-  history:"Древняя западная держава, выросшая вокруг священного дерева и горных святилищ. Шахбулат славится библиотеками, лекарями и хранителями редких Эмердалов. Имперский двор придерживается строгого церемониала и поддерживает Руис.",
-  facts:[["Столица","Шахр-Нур"],["Правитель","Ямин Булатов"],["Сила","Учёные, лекари, мастера Эмердалов"],["Армия-фарисы]]
+  type:"Империя",title:"Империя Шахнвулат",
+  history:"Древняя западная держава, выросшая вокруг священного дерева и горных святилищ. Шахнвулат славится библиотеками, лекарями и хранителями редких Эмердалов. Имперский двор придерживается строгого церемониала и поддерживает Руис.",
+  facts:[["Столица","Шахр-Нур"],["Правитель","Императрица Саира аль-Вулат"],["Сила","Учёные, лекари, мастера Эмердалов"],["Отношение к Руис","Союзник"]]
  },
- "Beksultan":{
-  type:"Империя",title:"Империя Бексултан",
-  history:"Северная горная империя, защищённая ледяными перевалами и каменными крепостями. Её правители считают порядок выше милосердия.",
-  facts:[["Столица","Кара-Векс"],["Правитель","Кейнан Маалал"],["Армия",-Бахриты"],
+ "veksultan":{
+  type:"Империя",title:"Империя Вексултан",
+  history:"Северная горная империя, защищённая ледяными перевалами и каменными крепостями. Её правители считают порядок выше милосердия. Вексултан официально сохраняет нейтралитет, но часть знати тайно торгует оружием.",
+  facts:[["Столица","Кара-Векс"],["Правитель","Султан Арслан IV"],["Армия","Тяжёлая конница и горные легионы"],["Позиция","Нейтралитет с тайными сделками"]]
  },
  "said":{
   type:"Империя",title:"Империя Саид",
   history:"Южная крепостная держава у моря Искандар. Её богатство основано на портах, металле и караванной торговле. Саид поддерживает Руис, но требует взамен доступ к северным рынкам.",
-  facts:[["Столица","Саид-Кала"],["Правитель","Комэй Миллен"],["Армия","сарбазы во главе сардара"],["Богатство","Порты, металл, караваны"]]
+  facts:[["Столица","Саид-Кала"],["Правитель","Император Джалал ад-Дин"],["Армия","Крепостные полки и морская стража"],["Богатство","Порты, металл, караваны"]]
  },
  "kian":{
   type:"Королевство",title:"Королевство Киан",
   history:"Восточное королевство садов, морских бухт и купеческих домов. Киан избегает открытой войны, предпочитая дипломатию и торговлю.",
-  facts:[["Столица","Киан-Сарай"],["Правитель","Азхар Иллариан"],["Сила","Флот и торговые дома"],["Позиция","Осторожный нейтралитет"]]
+  facts:[["Столица","Киан-Сарай"],["Правитель","Король Самир аль-Киан"],["Сила","Флот и торговые дома"],["Позиция","Осторожный нейтралитет"]]
  },
  "alkhan":{
-  type:"Королевство",title:"Королевство Алхан",
-  history:"Государство башен и проливов, контролирующее важнейшие морские проходы. Алхан известен своей неизвестностью.",
-  facts:[["Столица","Аль-Ханир"],["Правитель","Король- Феркат Салма"],["Армия","Тирдозы"],
+  type:"Королевство",title:"Королевство Алкхан",
+  history:"Государство башен и проливов, контролирующее важнейшие морские проходы. Алкхан известен мастерами навигации и морской разведкой.",
+  facts:[["Столица","Аль-Ханир"],["Правитель","Королева Мейра Алхан"],["Армия","Морская стража и башенные гарнизоны"],["Позиция","Союзник Руис"]]
  },
  "sanjar":{
-  type:"Королевство",title:"Королевство Санджар",
-  history:"Западные долины Санджара лежат на пути караванов. Здесь чтят гостеприимство, родовую честь и слово, данное перед свидетелями. Королевство где всегда холодно.",
-  facts:[["Столица","Санжар"],["Правитель","Санджар Джамиль"],["Сила","],["Проблема","Внутренний раскол"]]
+  type:"Королевство",title:"Королевство Санжар",
+  history:"Западные долины Санжара лежат на пути караванов. Здесь чтят гостеприимство, родовую честь и слово, данное перед свидетелями. Королевство расколото между сторонниками Руис и агентами Гиксосов.",
+  facts:[["Столица","Санжар"],["Правитель","Король Хасан ибн Малик"],["Сила","Караванные союзы и лёгкая конница"],["Проблема","Внутренний раскол"]]
  },
  "religion":{
   type:"Религия",title:"Ислам в Династии Алмааз",
@@ -368,25 +595,28 @@ const cards={
  },
  "conflict":{
   type:"История",title:"Война Гиксосов и Руис",
-  history:"Конфликт начался с предательства. Гиксосы стремятся подчинить Руис и избавиться от проклятия. Руис считает это злом",
-  facts:[["Причина","Война ради мира"],["Стороны","Гиксосы против Руис и союзников"],["Последствия","Разорённые дороги, дипломатические кризисы, рост армий"]]
+  history:"Конфликт начался с борьбы за контроль над караванными дорогами и переправами. Гиксосы стремятся подчинить Руис и превратить его в военную столицу. Руис отвечает союзами, дипломатией и мобилизацией городских гильдий.",
+  facts:[["Причина","Торговые пути, власть и наследие"],["Стороны","Гиксосы против Руис и союзников"],["Последствия","Разорённые дороги, дипломатические кризисы, рост армий"]]
  },
  "riellan":{
   type:"Море и легенда",title:"Океан Риеллан",
-  history:"Моряки рассказывают, что на дне живут неизвестные монстры.",
-  facts:[["Опасность","Холодные туманы"],["Легенда","монстры"],["Пути","Северо-западные торговые маршруты"]]
+  history:"Моряки рассказывают, что в безлунные ночи над водой появляется серебряная дорога. Корабль, который последует по ней, либо достигнет далёкого берега за одну ночь, либо исчезнет навсегда.",
+  facts:[["Опасность","Холодные туманы"],["Легенда","Серебряная дорога"],["Пути","Северо-западные торговые маршруты"]]
  },
  "rieman":{
+  type:"Море и легенда",title:"Океан Риеман",
+  history:"Глубокое северное море. По преданию, под его водами лежит затонувший дворец первой династии, а его купола видны лишь во время великого отлива.",
+  facts:[["Опасность","Рифы и ледяные течения"],["Легенда","Затонувший дворец"],["Пути","Вексултан и северные гавани"]]
  },
  "iskandar":{
   type:"Море и легенда",title:"Океан Искандар",
-  history:"Тёплое западное море, где купцы ориентируются по звёздам. Считается, что имя каждого погибшего моряка однажды возвращается эхом с волн.",
+  history:"Тёплое западное море, где купцы ориентируются по звёздам и старым песням. Считается, что имя каждого погибшего моряка однажды возвращается эхом с волн.",
   facts:[["Опасность","Внезапные штормы"],["Легенда","Эхо погибших моряков"],["Пути","Порты Саида и западные земли"]]
  },
  "selmegin":{
   type:"Море и легенда",title:"Океан Сельмегин",
   history:"Юго-восточное море известно золотыми закатами и быстрыми течениями. Легенда говорит о корабле без команды, который появляется перед падением великой династии.",
-  facts:[["Опасность","Сильные течения"],["Легенда","Корабль-предвестник"],["Пути","Алхан и восточная торговля"]]
+  facts:[["Опасность","Сильные течения"],["Легенда","Корабль-предвестник"],["Пути","Алкхан и восточная торговля"]]
  }
 };
 
@@ -459,5 +689,223 @@ introBtn.onclick=()=>{
  introBtn.textContent=hidden?"Скрыть летопись":"Показать летопись";
 };
 </script>
+
+<div id="dynamicMarkers">
+ <button class="map-marker" data-id="ruis" data-kind="empire" style="left:50%;top:46%">
+  <span class="marker-core">♛</span><span class="marker-label">Руис</span>
+ </button>
+ <button class="map-marker" data-id="said" data-kind="empire" style="left:31%;top:34%">
+  <span class="marker-core">♜</span><span class="marker-label">Саид</span>
+ </button>
+ <button class="map-marker" data-id="shahbulat" data-kind="empire" style="left:68%;top:31%">
+  <span class="marker-core">♞</span><span class="marker-label">Шахбулат</span>
+ </button>
+ <button class="map-marker" data-id="beksultan" data-kind="empire" style="left:74%;top:58%">
+  <span class="marker-core">❄</span><span class="marker-label">Бексултан</span>
+ </button>
+ <button class="map-marker" data-id="sandzhar" data-kind="kingdom" style="left:64%;top:43%">
+  <span class="marker-core">♔</span><span class="marker-label">Санджар</span>
+ </button>
+ <button class="map-marker" data-id="kian" data-kind="kingdom" style="left:70%;top:67%">
+  <span class="marker-core">♔</span><span class="marker-label">Киан</span>
+ </button>
+ <button class="map-marker" data-id="alhan" data-kind="kingdom" style="left:24%;top:62%">
+  <span class="marker-core">☾</span><span class="marker-label">Алхан</span>
+ </button>
+
+ <button class="map-marker" data-id="village-rashid" data-kind="village" style="left:42%;top:55%">
+  <span class="marker-core">⌂</span><span class="marker-label">Рашид</span>
+ </button>
+ <button class="map-marker" data-id="village-nur" data-kind="village" style="left:57%;top:61%">
+  <span class="marker-core">⌂</span><span class="marker-label">Нур</span>
+ </button>
+ <button class="map-marker" data-id="village-safir" data-kind="village" style="left:36%;top:72%">
+  <span class="marker-core">⌂</span><span class="marker-label">Сафир</span>
+ </button>
+ <button class="map-marker" data-id="market-zahra" data-kind="market" style="left:47%;top:62%">
+  <span class="marker-core">¤</span><span class="marker-label">Рынок Захра</span>
+ </button>
+ <button class="map-marker" data-id="market-sand" data-kind="market" style="left:61%;top:53%">
+  <span class="marker-core">¤</span><span class="marker-label">Песчаный базар</span>
+ </button>
+ <button class="map-marker" data-id="caravan-east" data-kind="caravan" style="left:53%;top:70%">
+  <span class="marker-core">◈</span><span class="marker-label">Восточный караван</span>
+ </button>
+ <button class="map-marker" data-id="caravan-said" data-kind="caravan" style="left:38%;top:42%">
+  <span class="marker-core">◈</span><span class="marker-label">Путь Саида</span>
+ </button>
+</div>
+
+<aside class="settlement-panel">
+ <h3>Поселения и торговые пути</h3>
+ <p>На карте отмечены деревни, базары и караванные стоянки. Нажмите на знак, чтобы открыть описание.</p>
+</aside>
+
+<div class="world-overlay" id="worldOverlay"></div>
+<article class="world-card" id="worldCard" aria-hidden="true">
+ <button class="world-card-close" id="worldCardClose" aria-label="Закрыть">×</button>
+ <div class="world-card-content">
+  <div class="world-card-type" id="worldCardType"></div>
+  <h2 id="worldCardTitle"></h2>
+  <p id="worldCardText"></p>
+  <dl id="worldCardFacts"></dl>
+ </div>
+</article>
+
+
+<script>
+const worldEntries={
+ ruis:{
+  type:"Столица Династии",
+  title:"Руис",
+  text:"Руис — место пребывания Фараона и сердце всей Династии Алмааз. Отсюда исходят важнейшие решения, указы и распоряжения, определяющие судьбу всех земель.",
+  facts:{
+   "Правитель":"Фараон Хейсон Амилириан",
+   "Власть":"Правит всей Династией Алмааз",
+   "Личная стража":"Меджаи — элитные воины Фараона",
+   "Значение":"Политический, религиозный и административный центр"
+  }
+ },
+ said:{
+  type:"Императорство",
+  title:"Императорство Саид",
+  text:"Самая большая и сильная Империя Династии. Саид обладает огромной территорией, многочисленным войском и сильной системой военного управления.",
+  facts:{
+   "Император":"Комэй Миллен",
+   "Армия":"Сарбазы",
+   "Командование":"Во главе стоит Сардар",
+   "Статус":"Самая большая и сильная Империя"
+  }
+ },
+ shahbulat:{
+  type:"Императорство",
+  title:"Императорство Шахбулат",
+  text:"Императорство Шахбулат известно сильной конницей и быстрыми военными походами. Его власть распространяется на Королевство Санджар.",
+  facts:{
+   "Император":"Ямин Булатов",
+   "Армия":"Фарисы — конные воины",
+   "Подчинённое королевство":"Санджар",
+   "Король Санджара":"Санджар Джамиль"
+  }
+ },
+ beksultan:{
+  type:"Императорство",
+  title:"Императорство Бексултан",
+  text:"Бексултан — дисциплинированная держава с сильной военной традицией и собственной системой морского и сухопутного командования.",
+  facts:{
+   "Император":"Кейнан Маалел",
+   "Армия":"Бахриты",
+   "Командование":"Амир-аль-Бахр",
+   "Подчинённое королевство":"Киан"
+  }
+ },
+ sandzhar:{
+  type:"Королевство",
+  title:"Королевство Санджар",
+  text:"Королевство Санджар находится под властью Императорства Шахбулат и поддерживает его политическую и военную силу.",
+  facts:{
+   "Король":"Санджар Джамиль",
+   "Подчинение":"Императорству Шахбулат",
+   "Военная связь":"Поддерживает фарисов Шахбулата",
+   "Статус":"Вассальное королевство"
+  }
+ },
+ kian:{
+  type:"Королевство",
+  title:"Королевство Киан",
+  text:"Киан находится под властью Императорства Бексултан и сохраняет собственную королевскую династию.",
+  facts:{
+   "Король":"Азхар Иллариан",
+   "Подчинение":"Императорству Бексултан",
+   "Статус":"Вассальное королевство",
+   "Связь с армией":"Поддерживает Бахритов"
+  }
+ },
+ alhan:{
+  type:"Королевство",
+  title:"Королевство Алхан",
+  text:"Самое неизвестное и полное тайн королевство. О его внутренних порядках, дворце и истинных целях известно крайне мало.",
+  facts:{
+   "Король":"Феркат Салма",
+   "Войско":"Тирдозы",
+   "Особенность":"Закрытость и множество тайн",
+   "Статус":"Самое малоизученное королевство"
+  }
+ },
+ "village-rashid":{
+  type:"Деревня",
+  title:"Рашид",
+  text:"Земледельческая деревня на пути к Руису. Известна садами, колодцами и постоялыми дворами для путников.",
+  facts:{"Промысел":"Зерно, финики, ткани","Связь":"Поставляет продовольствие Руису","Защита":"Небольшой гарнизон"}
+ },
+ "village-nur":{
+  type:"Деревня",
+  title:"Нур",
+  text:"Поселение ремесленников, где изготавливают лампы, стекло, украшения и дорожные амулеты.",
+  facts:{"Промысел":"Стекло и светильники","Торговля":"Работает с караванами","Особенность":"Ночные рынки"}
+ },
+ "village-safir":{
+  type:"Деревня",
+  title:"Сафир",
+  text:"Тихая деревня у дальних торговых троп. Служит убежищем для охотников, проводников и караванщиков.",
+  facts:{"Промысел":"Кожа, травы, провиант","Роль":"Стоянка проводников","Опасность":"Разбойники на дальних дорогах"}
+ },
+ "market-zahra":{
+  type:"Торговый рынок",
+  title:"Рынок Захра",
+  text:"Большой рынок тканей, благовоний, книг, оружия и редких камней. Здесь встречаются купцы почти из всех земель.",
+  facts:{"Товары":"Ткани, специи, книги, камни","Посетители":"Купцы всех держав","Охрана":"Городская стража"}
+ },
+ "market-sand":{
+  type:"Торговый рынок",
+  title:"Песчаный базар",
+  text:"Караванный базар на пересечении пустынных дорог. Здесь меняют лошадей, воду, припасы и сведения.",
+  facts:{"Товары":"Лошади, вода, соль, карты","Роль":"Караванный узел","Особенность":"Торговля новостями"}
+ },
+ "caravan-east":{
+  type:"Караван",
+  title:"Восточный караван",
+  text:"Крупный торговый караван, перевозящий шёлк, специи, лекарства и металлические изделия между восточными землями.",
+  facts:{"Маршрут":"Бексултан — Киан — центральные рынки","Охрана":"Наёмные всадники","Груз":"Шёлк, специи, лекарства"}
+ },
+ "caravan-said":{
+  type:"Караванный путь",
+  title:"Путь Саида",
+  text:"Защищённый маршрут, связывающий Саид с центральными землями Династии. По нему движутся военные обозы и торговые караваны.",
+  facts:{"Маршрут":"Саид — Руис","Охрана":"Сарбазы","Груз":"Металл, зерно, оружие"}
+ }
+};
+
+const worldCard=document.getElementById("worldCard");
+const worldOverlay=document.getElementById("worldOverlay");
+const worldCardClose=document.getElementById("worldCardClose");
+
+function openWorldCard(id){
+ const entry=worldEntries[id];
+ if(!entry) return;
+ document.getElementById("worldCardType").textContent=entry.type;
+ document.getElementById("worldCardTitle").textContent=entry.title;
+ document.getElementById("worldCardText").textContent=entry.text;
+ document.getElementById("worldCardFacts").innerHTML=Object.entries(entry.facts)
+  .map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("");
+ worldOverlay.classList.add("open");
+ worldCard.classList.add("open");
+ worldCard.setAttribute("aria-hidden","false");
+ document.body.style.overflow="hidden";
+}
+function closeWorldCard(){
+ worldOverlay.classList.remove("open");
+ worldCard.classList.remove("open");
+ worldCard.setAttribute("aria-hidden","true");
+ document.body.style.overflow="";
+}
+document.querySelectorAll(".map-marker").forEach(marker=>{
+ marker.addEventListener("click",()=>openWorldCard(marker.dataset.id));
+});
+worldCardClose.addEventListener("click",closeWorldCard);
+worldOverlay.addEventListener("click",closeWorldCard);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeWorldCard()});
+</script>
+
 </body>
 </html>

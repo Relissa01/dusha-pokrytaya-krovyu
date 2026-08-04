@@ -15,15 +15,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{<div class="bismillah">
-
-    <div class="symbol">﷽</div>
-
-    <div class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-
-</div>
-
-<header>
+body{
   margin:0;min-height:100vh;color:var(--ivory);
   font-family:"Cormorant Infant",Georgia,serif;
   background:
@@ -152,3 +144,74 @@ footer{text-align:center;padding:26px 20px 48px;border-top:1px solid var(--line)
 @media(max-width:850px){.law-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rank-overview{grid-template-columns:1fr}}
 @media(max-width:560px){header{padding-top:58px}.law-grid{grid-template-columns:1fr}.panel{padding:18px}.grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.stars,.fog,.fog2,.card::after,.gem{animation:none}.card{opacity:1;transform:none}}
+
+
+.bismillah-bar{
+ position:relative;
+ z-index:300;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ min-height:102px;
+ padding:12px 70px 11px;
+ text-align:center;
+ background:
+  radial-gradient(circle at 50% 0,rgba(169,139,212,.16),transparent 48%),
+  linear-gradient(180deg,rgba(7,5,12,.98),rgba(13,9,20,.95));
+ border-bottom:1px solid rgba(190,166,225,.42);
+ box-shadow:0 15px 44px rgba(0,0,0,.46);
+}
+.bismillah-symbol{
+ color:#d7c18a;
+ font-family:"Amiri","Times New Roman",serif;
+ font-size:38px;
+ line-height:1;
+ text-shadow:0 0 18px rgba(214,189,118,.34);
+ animation:bismillahGlow 3.8s ease-in-out infinite alternate;
+}
+.bismillah-text{
+ margin-top:4px;
+ color:#efe5fa;
+ font-family:"Amiri","Times New Roman",serif;
+ font-size:clamp(20px,2.4vw,29px);
+ line-height:1.25;
+ direction:rtl;
+ unicode-bidi:isolate;
+}
+.bismillah-home{
+ position:absolute;
+ left:16px;
+ top:50%;
+ transform:translateY(-50%);
+ color:#e2d5ef;
+ text-decoration:none;
+ border:1px solid rgba(190,166,225,.38);
+ background:rgba(25,17,34,.86);
+ padding:8px 11px;
+ font-weight:700;
+}
+.bismillah-home:hover{
+ border-color:#baa0df;
+ color:#fff;
+}
+@keyframes bismillahGlow{
+ from{filter:brightness(.95)}
+ to{filter:brightness(1.16);text-shadow:0 0 26px rgba(214,189,118,.48)}
+}
+.card.touch{
+ transform:translateY(-6px) scale(1.01);
+ border-color:#baa0df;
+ box-shadow:0 24px 62px rgba(0,0,0,.58),0 0 23px color-mix(in srgb,var(--gem) 30%,transparent);
+}
+@media(max-width:760px){
+ .bismillah-bar{min-height:94px;padding:10px 45px}
+ .bismillah-symbol{font-size:30px}
+ .bismillah-text{font-size:18px}
+ .bismillah-home{left:8px;padding:7px 8px;font-size:.8rem}
+}
+@media(max-width:430px){
+ .bismillah-bar{padding-left:42px;padding-right:8px}
+ .bismillah-symbol{font-size:27px}
+ .bismillah-text{font-size:16px}
+}

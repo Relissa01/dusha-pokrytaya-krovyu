@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07070a">
+<title>Империи и Королевства — Династия Алмааз</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Amiri:wght@400;700&family=Cormorant+Infant:wght@400;500;600;700&family=Forum&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --void:#050508;
+  --obsidian:#0b0b10;
+  --panel:#121219;
+  --panel2:#191722;
+  --gold:#d0b56f;
+  --gold2:#f0dca1;
+  --ivory:#eee8d8;
+  --muted:#aaa396;
+  --green:#48624f;
+  --blue:#43516d;
+  --violet:#655179;
+  --line:rgba(208,181,111,.32);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--ivory);
+  font-family:"Cormorant Infant",Georgia,serif;
+  background:
+    radial-gradient(circle at 50% -12%,rgba(104,79,41,.18),transparent 30%),
+    linear-gradient(180deg,#0c0c11 0%,#07070a 52%,#030305 100%);
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-4;
+  pointer-events:none;
+  opacity:.18;
+  background:
+    repeating-linear-gradient(45deg,transparent 0 46px,rgba(208,181,111,.05) 47px 48px),
+    repeating-linear-gradient(-45deg,transparent 0 46px,rgba(92,116,91,.035) 47px 48px);
+}
+.ash{
+  position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.18;
+  background-image:
+    radial-gradient(circle,rgba(230,218,188,.72) 0 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(146,132,102,.42) 0 1px,transparent 1.5px);
+  background-size:120px 120px,180px 180px;
+  background-position:0 0,40px 30px;
+  animation:ashFall 25s linear infinite;
+}
+@keyframes ashFall{to{background-position:90px 270px,210px 340px}}
+.fog,.fog2{
+  position:fixed;left:-25%;width:150%;height:28%;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 60%,rgba(173,168,157,.14),transparent 35%),
+    radial-gradient(ellipse at 52% 55%,rgba(139,133,124,.10),transparent 32%),
+    radial-gradient(ellipse at 84% 62%,rgba(173,168,157,.13),transparent 36%);
+  filter:blur(20px)
+}
+.fog{bottom:0;animation:fogMove 36s ease-in-out infinite alternate}
+.fog2{top:22%;opacity:.42;animation:fogMove2 48s ease-in-out infinite alternate}
+@keyframes fogMove{from{transform:translateX(-4%)}to{transform:translateX(8%)}}
+@keyframes fogMove2{from{transform:translateX(7%)}to{transform:translateX(-8%)}}
+
+header{
+  position:relative;
+  text-align:center;
+  padding:76px 18px 42px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+header::before,header::after{
+  content:"";
+  position:absolute;
+  top:26px;
+  width:220px;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+header::before{left:4%}
+header::after{right:4%;transform:scaleX(-1)}
+.kicker{
+  color:var(--gold);
+  font-family:"Forum",serif;
+  letter-spacing:.38em;
+  text-transform:uppercase;
+  font-size:.72rem;
+}
+h1{
+  margin:14px 0 10px;
+  font:400 clamp(3.2rem,8vw,6.7rem)/.9 "Almendra SC",serif;
+  color:var(--gold2);
+  text-shadow:0 8px 28px #000;
+}
+.lead{
+  max-width:820px;
+  margin:auto;
+  color:#cbc2b0;
+  font-size:1.2rem;
+  line-height:1.6;
+}
+.nav{
+  display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:24px
+}
+.nav a{
+  color:#eadfca;text-decoration:none;border:1px solid var(--line);
+  background:rgba(15,15,20,.82);padding:9px 13px;transition:.2s ease
+}
+.nav a:hover{border-color:var(--gold);background:#22201d}
+
+.filters{
+  position:sticky;
+  top:0;
+  z-index:120;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:12px;
+  background:rgba(6,6,9,.9);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.filter-btn{
+  width:auto;
+  border:1px solid var(--line);
+  background:#121218;
+  color:var(--ivory);
+  padding:10px 14px;
+  font:600 1rem "Cormorant Infant",serif;
+  cursor:pointer;
+}
+.filter-btn.active,.filter-btn:hover{
+  border-color:var(--gold);
+  background:linear-gradient(180deg,#2b271e,#16140f);
+  color:#fff1c1;
+}
+
+.page{
+  width:min(1220px,calc(100% - 24px));
+  margin:34px auto 82px;
+}
+.section-title{
+  display:flex;align-items:center;gap:15px;justify-content:center;
+  margin:0 0 24px;
+}
+.section-title::before,.section-title::after{
+  content:"";width:min(170px,20vw);height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold));
+}
+.section-title::after{transform:scaleX(-1)}
+.section-title h2{
+  margin:0;
+  font:400 clamp(2.3rem,6vw,4.2rem) "Almendra SC",serif;
+  color:#efdc9e;
+  text-align:center;
+}
+
+.hierarchy{
+  margin-bottom:62px;
+}
+.tree{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.state-card{
+  position:relative;
+  min-height:260px;
+  padding:22px;
+  border:1px solid rgba(208,181,111,.35);
+  background:
+    radial-gradient(circle at 50% 0,rgba(84,101,83,.18),transparent 38%),
+    linear-gradient(150deg,#1b1b22,#0b0b10 74%);
+  box-shadow:0 18px 48px rgba(0,0,0,.38);
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(24px);
+  transition:.55s ease;
+}
+.state-card.visible{opacity:1;transform:translateY(0)}
+.state-card::before{
+  content:"";
+  position:absolute;inset:7px;
+  border:1px solid rgba(208,181,111,.12);
+  pointer-events:none;
+}
+.state-card h3{
+  margin:0 0 8px;
+  font:400 1.9rem "Almendra SC",serif;
+  color:#f0dda0;
+}
+.state-type{
+  color:#9d927e;
+  text-transform:uppercase;
+  letter-spacing:.13em;
+  font-size:.7rem;
+}
+.state-card p{color:#d3c9b8;line-height:1.55}
+.subordinate{
+  margin-top:15px;
+  padding:12px;
+  border-left:2px solid var(--gold);
+  background:rgba(255,255,255,.025);
+}
+.subordinate b{color:#d6bd78}
+
+.army-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+}
+.army-card{
+  position:relative;
+  min-height:520px;
+  overflow:hidden;
+  border:1px solid rgba(208,181,111,.36);
+  background:#0d0d12;
+  box-shadow:0 22px 58px rgba(0,0,0,.44);
+  opacity:0;
+  transform:translateY(28px);
+  transition:.6s ease;
+}
+.army-card.visible{opacity:1;transform:translateY(0)}
+.army-card:hover{
+  transform:translateY(-6px);
+  border-color:#e4c77b;
+  box-shadow:0 28px 68px rgba(0,0,0,.58),0 0 24px rgba(208,181,111,.16);
+}
+.army-image{
+  position:relative;
+  height:330px;
+  overflow:hidden;
+}
+.army-image::after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 52%,rgba(8,8,11,.96) 100%);
+}
+.army-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top;
+  filter:saturate(.82) contrast(1.08) brightness(.76);
+  transition:transform .55s ease,filter .4s ease;
+}
+.army-card:hover img{
+  transform:scale(1.045);
+  filter:saturate(.94) contrast(1.1) brightness(.88);
+}
+.army-body{
+  position:relative;
+  padding:20px;
+}
+.army-body h3{
+  margin:0;
+  font:400 2rem "Almendra SC",serif;
+  color:#f0dca0;
+}
+.army-state{
+  color:#a39372;
+  margin:5px 0 12px;
+  font-style:italic;
+}
+.army-body p{
+  margin:0;
+  color:#d3c9b8;
+  line-height:1.55;
+}
+.army-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:15px;
+}
+.army-tags span{
+  border:1px solid rgba(208,181,111,.22);
+  padding:5px 8px;
+  font-size:.8rem;
+  color:#cbbd9f;
+  background:rgba(255,255,255,.025);
+}
+.rank-mark{
+  position:absolute;
+  right:14px;
+  top:14px;
+  z-index:4;
+  padding:6px 10px;
+  border:1px solid rgba(208,181,111,.48);
+  background:rgba(8,8,11,.8);
+  color:#e5cd8b;
+  font-size:.75rem;
+}
+.hidden{display:none!important}
+
+footer{
+  text-align:center;
+  padding:28px 20px 48px;
+  color:#8f897e;
+  border-top:1px solid var(--line);
+}
+@media(max-width:900px){
+  .tree{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  header{padding-top:58px}
+  .tree{grid-template-columns:1fr}
+  .army-grid{grid-template-columns:1fr}
+  .army-image{height:300px}
+  .filters{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+  .filter-btn{white-space:nowrap}
+}
+@media(prefers-reduced-motion:reduce){
+  .ash,.fog,.fog2{animation:none}
+  .state-card,.army-card{opacity:1;transform:none}
+}
+
+.bismillah-bar{
+ position:relative;
+ z-index:300;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ min-height:102px;
+ padding:12px 70px 11px;
+ text-align:center;
+ background:
+  radial-gradient(circle at 50% 0,rgba(208,181,111,.14),transparent 48%),
+  linear-gradient(180deg,rgba(7,6,5,.98),rgba(14,10,8,.95));
+ border-bottom:1px solid rgba(208,181,111,.45);
+ box-shadow:0 15px 44px rgba(0,0,0,.44);
+}
+.bismillah-symbol{
+ color:#d7b76d;
+ font-family:"Amiri","Times New Roman",serif;
+ font-size:38px;
+ line-height:1;
+ text-shadow:0 0 18px rgba(208,181,111,.34);
+}
+.bismillah-text{
+ margin-top:4px;
+ color:#f1dfb5;
+ font-family:"Amiri","Times New Roman",serif;
+ font-size:clamp(20px,2.4vw,29px);
+ line-height:1.25;
+ direction:rtl;
+ unicode-bidi:isolate;
+}
+.bismillah-home{
+ position:absolute;
+ left:16px;
+ top:50%;
+ transform:translateY(-50%);
+ color:#e6d5af;
+ text-decoration:none;
+ border:1px solid rgba(208,181,111,.42);
+ background:rgba(29,21,15,.84);
+ padding:8px 11px;
+ font-weight:700;
+}
+.bismillah-home:hover{border-color:#d8b86f;color:#fff0c4}
+
+.economy{
+ margin:0 0 62px;
+}
+.economy-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+ gap:16px;
+}
+.economy-card{
+ position:relative;
+ min-height:250px;
+ padding:22px;
+ border:1px solid rgba(208,181,111,.36);
+ background:
+  radial-gradient(circle at 50% 0,rgba(69,87,75,.16),transparent 40%),
+  linear-gradient(150deg,#1b1918,#0b0b0f 76%);
+ box-shadow:0 18px 48px rgba(0,0,0,.38);
+ opacity:0;
+ transform:translateY(24px);
+ transition:.55s ease;
+ overflow:hidden;
+}
+.economy-card.visible{opacity:1;transform:none}
+.economy-card::before{
+ content:"";
+ position:absolute;inset:7px;
+ border:1px solid rgba(208,181,111,.12);
+ pointer-events:none;
+}
+.economy-card h3{
+ margin:0 0 8px;
+ font:400 1.75rem "Almendra SC",serif;
+ color:#f0dda0;
+}
+.economy-card .population{
+ color:#d2b36b;
+ font-weight:700;
+ margin-bottom:12px;
+}
+.economy-card ul{
+ margin:0;
+ padding-left:19px;
+ color:#d4cab8;
+ line-height:1.55;
+}
+.resource-strip{
+ margin-top:18px;
+ display:flex;
+ flex-wrap:wrap;
+ gap:8px;
+}
+.resource-strip span{
+ border:1px solid rgba(208,181,111,.23);
+ background:rgba(255,255,255,.025);
+ color:#d9c79f;
+ padding:6px 9px;
+ font-size:.83rem;
+}
+.summary-panel{
+ margin-top:18px;
+ padding:18px;
+ border:1px solid rgba(208,181,111,.34);
+ background:linear-gradient(145deg,rgba(30,24,18,.92),rgba(10,9,10,.96));
+ color:#d6cbb8;
+ line-height:1.6;
+}
+.summary-panel strong{color:#edcf83}
+@media(max-width:760px){
+ .bismillah-bar{min-height:94px;padding:10px 45px}
+ .bismillah-symbol{font-size:30px}
+ .bismillah-text{font-size:18px}
+ .bismillah-home{left:8px;padding:7px 8px;font-size:.8rem}
+}
+@media(max-width:430px){
+ .bismillah-bar{padding-left:42px;padding-right:8px}
+ .bismillah-symbol{font-size:27px}
+ .bismillah-text{font-size:16px}
+}
+
+</style>
+</head>
+<body>
+
+<div class="bismillah-bar">
+ <a class="bismillah-home" href="index.html">Главная</a>
+ <div class="bismillah-symbol" aria-hidden="true">﷽</div>
+ <div class="bismillah-text" lang="ar" dir="rtl">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+</div>
+
+
+<div class="ash"></div>
+<div class="fog"></div>
+<div class="fog2"></div>
+
+<header>
+  <div class="kicker">Политический кодекс Династии Алмааз</div>
+  <h1>Империи и Королевства</h1>
+  <p class="lead">Державы, вассальные королевства, армии, население и ресурсы, определяющие силу Династии Алмааз.</p>
+
+  <nav class="nav">
+    <a href="index.html">Главная</a>
+    <a href="world.html">Карта мира</a>
+    <a href="characters.html">Персонажи</a>
+    <a href="emerdals.html">Эмердалы</a>
+  </nav>
+</header>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">Все</button>
+  <button class="filter-btn" data-filter="empire">Императорства</button>
+  <button class="filter-btn" data-filter="kingdom">Королевства</button>
+  <button class="filter-btn" data-filter="guard">Личная стража</button>
+  <button class="filter-btn" data-filter="army">Войска</button>
+</div>
+
+<main class="page">
+
+  <section class="hierarchy">
+    <div class="section-title"><h2>Политическая иерархия</h2></div>
+
+    <div class="tree">
+      <article class="state-card" data-kind="empire">
+        <div class="state-type">Фараонская власть</div>
+        <h3>Династия Алмааз</h3>
+        <p>Фараон Хейсон Амилириан правит всей Династией из Руиса. Центр верховной власти объединяет политическое, религиозное и военное управление.</p>
+        <div class="subordinate"><b>Правитель:</b> Фараон Хейсон Амилириан<br><b>Столица:</b> Руис<br><b>Личная стража:</b> Меджаи</div>
+      </article>
+
+      <article class="state-card" data-kind="empire">
+        <div class="state-type">Самая большая империя</div>
+        <h3>Императорство Саид</h3>
+        <p>Самая большая и сильная Империя Династии Алмааз. Обладает развитой металлургией, оружейными мастерскими и крупными мануфактурами.</p>
+        <div class="subordinate"><b>Император:</b> Комэй Миллен<br><b>Армия:</b> Сарбазы<br><b>Командование:</b> Сардар</div>
+      </article>
+
+      <article class="state-card" data-kind="empire">
+        <div class="state-type">Императорство</div>
+        <h3>Императорство Шахбулат</h3>
+        <p>Империя коневодства и сильной кавалерии. Её хозяйство опирается на скот, зерно, кожу и военные конюшни.</p>
+        <div class="subordinate"><b>Император:</b> Ямин Булатов<br><b>Армия:</b> Фарисы — конница<br><b>Подчинённое королевство:</b> Санджар</div>
+      </article>
+
+      <article class="state-card" data-kind="empire">
+        <div class="state-type">Императорство</div>
+        <h3>Императорство Бексултан</h3>
+        <p>Морская держава с верфями, внутренней торговлей и развитой добычей соли. Бахриты защищают побережье и торговые пути.</p>
+        <div class="subordinate"><b>Император:</b> Кейнан Маалел<br><b>Армия:</b> Бахриты<br><b>Командование:</b> Амир-аль-Бахр<br><b>Подчинённое королевство:</b> Киан</div>
+      </article>
+
+      <article class="state-card" data-kind="kingdom">
+        <div class="state-type">Подчинённое королевство</div>
+        <h3>Королевство Санджар</h3>
+        <p>Вассальное королевство Императорства Шахбулат, связанное с его конницей и торговлей скотом.</p>
+        <div class="subordinate"><b>Король:</b> Санджар Джамиль<br><b>Подчинение:</b> Императорству Шахбулат</div>
+      </article>
+
+      <article class="state-card" data-kind="kingdom">
+        <div class="state-type">Подчинённое королевство</div>
+        <h3>Королевство Киан</h3>
+        <p>Вассальное королевство Императорства Бексултан, поддерживающее его внутреннюю торговлю и военную систему.</p>
+        <div class="subordinate"><b>Король:</b> Азхар Иллариан<br><b>Подчинение:</b> Императорству Бексултан</div>
+      </article>
+
+      <article class="state-card" data-kind="kingdom">
+        <div class="state-type">Независимое королевство</div>
+        <h3>Королевство Алхан</h3>
+        <p>Самое неизвестное и полное тайн королевство. Его земли богаты лесом, рудой, луками и ценным сырьём.</p>
+        <div class="subordinate"><b>Король:</b> Феркат Салма<br><b>Армия:</b> Тирдозы</div>
+      </article>
+    </div>
+  </section>
+
+  
+<section class="economy">
+ <div class="section-title"><h2>Экономика и ресурсы</h2></div>
+ <div class="summary-panel">
+  <strong>Династия Алмааз</strong> обладает самостоятельной экономикой. Основу богатства составляют зерно, золото, руда, металл, дерево, соль, лошади, корабли и оружие. Общая численность населения земель Алмааз — около <strong>3 миллиардов человек</strong>.
+ </div>
+
+ <div class="economy-grid">
+  <article class="economy-card">
+   <h3>Владения Фараона</h3>
+   <div class="population">Население: около 600 млн</div>
+   <ul>
+    <li>Зерно и государственные хранилища.</li>
+    <li>Золото и казна.</li>
+    <li>Храмы и религиозные центры.</li>
+    <li>Финансовое управление Династией.</li>
+   </ul>
+   <div class="resource-strip"><span>Зерно</span><span>Золото</span><span>Храмы</span><span>Финансы</span></div>
+  </article>
+
+  <article class="economy-card">
+   <h3>Императорство Саид</h3>
+   <div class="population">Население: около 750 млн</div>
+   <ul>
+    <li>Металлургия и обработка руды.</li>
+    <li>Производство оружия.</li>
+    <li>Мануфактуры.</li>
+    <li>Крупнейшая военная экономика.</li>
+   </ul>
+   <div class="resource-strip"><span>Металл</span><span>Оружие</span><span>Мануфактуры</span></div>
+  </article>
+
+  <article class="economy-card">
+   <h3>Императорство Шахбулат</h3>
+   <div class="population">Население: около 550 млн</div>
+   <ul>
+    <li>Коневодство и военные конюшни.</li>
+    <li>Разведение скота.</li>
+    <li>Зерновое хозяйство.</li>
+    <li>Кожа и конская упряжь.</li>
+   </ul>
+   <div class="resource-strip"><span>Лошади</span><span>Скот</span><span>Зерно</span><span>Кожа</span></div>
+  </article>
+
+  <article class="economy-card">
+   <h3>Императорство Бексултан</h3>
+   <div class="population">Население: около 550 млн</div>
+   <ul>
+    <li>Флот и морские силы.</li>
+    <li>Верфи и строительство кораблей.</li>
+    <li>Добыча соли.</li>
+    <li>Внутренняя торговля.</li>
+   </ul>
+   <div class="resource-strip"><span>Флот</span><span>Корабли</span><span>Соль</span><span>Торговля</span></div>
+  </article>
+
+  <article class="economy-card">
+   <h3>Королевство Алхан</h3>
+   <div class="population">Население: около 550 млн</div>
+   <ul>
+    <li>Лес и древесина.</li>
+    <li>Руда и природное сырьё.</li>
+    <li>Производство луков.</li>
+    <li>Закрытые внутренние промыслы.</li>
+   </ul>
+   <div class="resource-strip"><span>Дерево</span><span>Руда</span><span>Луки</span><span>Сырьё</span></div>
+  </article>
+ </div>
+</section>
+
+<section>
+    <div class="section-title"><h2>Военные подразделения</h2></div>
+
+    <div class="army-grid">
+
+      <article class="army-card" data-kind="army">
+        <div class="army-image">
+          <span class="rank-mark">1</span>
+          <img src="army-images/bahrits.jpeg" alt="Бахриты" loading="lazy">
+        </div>
+        <div class="army-body">
+          <h3>Бахриты</h3>
+          <div class="army-state">Императорство Бексултан</div>
+          <p>Основное войско Бексултана под командованием Амир-аль-Бахра. Тёмная униформа, металлическая защита и строгая дисциплина подчёркивают их принадлежность морской военной школе.</p>
+          <div class="army-tags"><span>Пехота</span><span>Дисциплина</span><span>Бексултан</span></div>
+        </div>
+      </article>
+
+      <article class="army-card" data-kind="guard">
+        <div class="army-image">
+          <span class="rank-mark">2</span>
+          <img src="army-images/medjai.jpeg" alt="Меджаи" loading="lazy">
+        </div>
+        <div class="army-body">
+          <h3>Меджаи</h3>
+          <div class="army-state">Личная стража Фараона</div>
+          <p>Элитные воины, охраняющие Фараона и дворец. Их закрытые доспехи и золотые знаки отличия символизируют абсолютную преданность престолу.</p>
+          <div class="army-tags"><span>Элита</span><span>Личная стража</span><span>Фараон</span></div>
+        </div>
+      </article>
+
+      <article class="army-card" data-kind="army">
+        <div class="army-image">
+          <span class="rank-mark">3</span>
+          <img src="army-images/sarbaz.jpeg" alt="Сарбазы" loading="lazy">
+        </div>
+        <div class="army-body">
+          <h3>Сарбазы</h3>
+          <div class="army-state">Императорство Саид</div>
+          <p>Основная военная сила крупнейшей империи. Сарбазы находятся под общим командованием Сардара, сражаются плотными построениями и используют щиты, сабли и тяжёлые кожано-металлические доспехи.</p>
+          <div class="army-tags"><span>Основное войско</span><span>Щиты</span><span>Саид</span></div>
+        </div>
+      </article>
+
+      <article class="army-card" data-kind="army">
+        <div class="army-image">
+          <span class="rank-mark">4</span>
+          <img src="army-images/faris.jpeg" alt="Фарисы" loading="lazy">
+        </div>
+        <div class="army-body">
+          <h3>Фарисы</h3>
+          <div class="army-state">Императорство Шахбулат</div>
+          <p>Конные воины Шахбулата. Их задача — быстрый удар, прорыв построения и преследование противника на открытой местности.</p>
+          <div class="army-tags"><span>Конница</span><span>Манёвр</span><span>Шахбулат</span></div>
+        </div>
+      </article>
+
+      <article class="army-card" data-kind="army">
+        <div class="army-image">
+          <span class="rank-mark">5</span>
+          <img src="army-images/tirdoz.jpeg" alt="Тирдозы" loading="lazy">
+        </div>
+        <div class="army-body">
+          <h3>Тирдозы</h3>
+          <div class="army-state">Королевство Алхан</div>
+          <p>Лучники и дальнобойные бойцы Алхана. Лёгкое снаряжение позволяет им быстро менять позицию и вести прицельный огонь.</p>
+          <div class="army-tags"><span>Лучники</span><span>Дальний бой</span><span>Алхан</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>Политический и военный кодекс · Династия Алмааз</footer>
+
+<script>
+const revealItems=[...document.querySelectorAll(".state-card,.army-card,.economy-card")];
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+revealItems.forEach((item,index)=>{
+  item.style.transitionDelay=`${Math.min(index%5,4)*80}ms`;
+  observer.observe(item);
+});
+
+const buttons=[...document.querySelectorAll(".filter-btn")];
+const stateCards=[...document.querySelectorAll(".state-card")];
+const armyCards=[...document.querySelectorAll(".army-card")];
+
+buttons.forEach(button=>{
+  button.addEventListener("click",()=>{
+    buttons.forEach(b=>b.classList.remove("active"));
+    button.classList.add("active");
+    const filter=button.dataset.filter;
+
+    stateCards.forEach(card=>{
+      const show=filter==="all" || card.dataset.kind===filter;
+      card.classList.toggle("hidden",!show);
+    });
+
+    armyCards.forEach(card=>{
+      const show=filter==="all" || card.dataset.kind===filter || (filter==="army" && card.dataset.kind==="guard");
+      card.classList.toggle("hidden",!show);
+    });
+  });
+});
+</script>
+</body>
+</html>
